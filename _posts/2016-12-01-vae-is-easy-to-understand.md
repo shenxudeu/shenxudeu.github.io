@@ -74,9 +74,9 @@ KL_loss = -0.5 * K.sum(1+ z_var -K.square(z_mean) - K.exp(z_var),axis=-1)
 loss = tf.reduce_mean(K.mean(construct_loss, axis=-1) + KL_loss)
 ```
 
-The only difference is VAE loss has an extra `KL_loss`, which is an simple function of the coding variables `z_mean` and `z_var`. We can also treat this term as an special regularizer. In summary, VAE is just an AutoEncoder with some special regularizer. This regularizer provides some guides what `z_mean` and `z_var` should looks like. And because of this extra regularization term, it performs better than classical AutoEncoder. (We will discuss why the regularizer works in later section)
+The only difference is VAE loss has an extra `KL_loss`, which is an simple function of the coding variables `z_mean` and `z_var`. We can also treat this term as an special regularizer. In summary, VAE is just an AutoEncoder with some special regularizer. This regularizer provides some guides what `z_mean` and `z_var` should look like. And because of this extra regularization term, it performs better than classical AutoEncoder. (We will discuss why the regularizer works in later section.)
 
-Now, let's have some fun to train this VAE we just built on MNIST. Firstly, let's train this VAE only with 2 dimension of the coding variables. In this way, we are encoding a $$$28x28$$$ MNIST image into 2 numbers. The following figure shows the trained 2-D coding variables from training images.
+Now, let's have some fun to train this VAE we just built on MNIST. Firstly, let's train this VAE only with 2 dimension of the coding variables. In this way, we are encoding a 28x28 MNIST image into 2 numbers. The following figure shows the trained 2-D coding variables from training images.
  
 ![image]({{ site.baseurl  }}/img/hidden_vars_train.png )
 
@@ -88,11 +88,11 @@ The first row is the true testing image, and second row is reconstructed images.
 
 ![image]({{ site.baseurl  }}/img/reconstruct_test_latent12.png )
 
-Also, remember VAE is a generative model, which means we can generate "new" images from nothing! Take the first example, we represent a $$$28 x 28 $$$ image into only **2** numbers. If we just scan the 2-D space and generate digits from there, here is what we can see.
+Also, remember VAE is a generative model, which means we can generate "new" images from nothing! Take the first example, we represent a 28 x 28 image into only **2** numbers. If we just scan the 2-D space and generate digits from there, here is what we can see.
 
 ![image]({{ site.baseurl  }}/img/generate_digit_map.png )
 
-We can generate any digit from 0 to 9. If we start from $$$(-0.15,-0.15)$$$ and slowly move those numbers to $$$(0.15, 0.15)$$$, we can see the beautiful figure in the beginning.  
+We can generate any digit from 0 to 9. If we start from (-0.15,-0.15) and slowly move those numbers to (0.15, 0.15), we can see the beautiful figure in the beginning.  
 
 
 
