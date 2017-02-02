@@ -13,6 +13,10 @@ I assume you, also like me, have attempted many times to understand Bayesian mod
 
 After all, Bayesian people speaks a different language from NN people, which can be counterintuitive at times. Among the hardest, there is no Andrej Karpathy yet on this topic. I am not by any measure qualified to be that guy, but would just like to share a bit of what I've known.
 
+I plan to spend the time and space of 3 blog posts to make the linkage between NN and Bayesian. The current one is the first: VAE is easy to understand. Following this if you are still interested you would want to check out:
+ - [Bayes Language](http://shenxudeu.github.io/2016/12/05/bayes-language/)
+ - [NN Infers Bayesian](http://shenxudeu.github.io/2016/12/18/nn-infers-bayes/)
+
 OK, let's get started.
 
 
