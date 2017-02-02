@@ -18,7 +18,7 @@ OK, let's get started.
 
 Variantial AntoEncoder is just a Neural Network
 ----
-Most articles on VAE (including the original paper) start with posterior distribution estimation, KL divergence, variational inference, and etc. Those 'fancy' terms means nothing to me at first time. We will get lost if trying to understand those terms and trying to follow the equations. I prefer to get the intuition of this model first, understand how this model works first, and play the code first. Then we can ask deeper questions, such as why this model works. Simply speaking, VAE is just a Neural Network (in the figure below) with a little trick in the loss function.
+Most articles on VAE (including the original paper) start with posterior distribution estimation, KL divergence, variational inference, etc. Those "fancy" terms means nothing to me at first time. We would get lost easily if trying to understand those terms or trying to follow the equations directly. As an alternative, I prefer to start from a more practical perspective, getting the intuition of this model, understanding how this model works, and playing the code. Then we can ask deeper questions, such as why this model works, what's the theory behind it.
 ![image]({{ site.baseurl  }}/img/vae_as_nn.png)
 
 
