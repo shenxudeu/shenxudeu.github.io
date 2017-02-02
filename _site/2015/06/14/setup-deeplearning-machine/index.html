@@ -44,11 +44,84 @@
 
 <div class="row-fluid">
     <div class="span8">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse elementum leo non felis porttitor vulputate. Nulla ipsum quam, auctor ut hendrerit quis, tincidunt eu metus. Quisque ipsum tellus, semper a tempus quis, interdum vel magna. Cras a nisl diam, in accumsan augue. Pellentesque varius nibh eu diam tempor rhoncus.</p>
+        <h1 id="how-to-setup-a-deep-learning-machine">How to setup a Deep Learning Machine</h1>
 
-<h2>Pellentesque sollicitudin</h2>
+<p>I spent sometime past few days to setup a new OS and related software for deep learning since I got a new GPU (GTX 980).</p>
 
-<p>Erat pellentesque ornare gravida, ipsum est luctus neque, eget condimentum urna arcu sit amet felis. Duis nisl augue, scelerisque quis iaculis non, commodo a tellus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tincidunt porttitor nibh at semper. </p>
+<p>I find out it is hard to setup a system running deep learning envrionment, especially the CUDA part. So I write it down this time and hopefully it would remind myself next and make sense to everyone.</p>
+
+<p>##Install Operting System</p>
+
+<p>I just installed a Ubuntu 14.04 this time, because seems it is the most stable version until now. The installation is quite straight forward, download the image from <a href="http://www.ubuntu.com/download/desktop">Utunbu website</a> and copy the image to USB drive and install it on the SSD.</p>
+
+<h2 id="install-nvidia-driver-and-cuda">Install Nvidia Driver and Cuda</h2>
+
+<p>This is the most import step. When I search around the web, a lot people suggest using</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>get-apt install nvidia-recent
+</code></pre>
+</div>
+<p>However, it does <strong>NOT</strong> work for me and a lot other people I belive. After I installed this driver from Ubuntu repositories, I could not login anymore (the screen would be freeze there). There are two reasons:</p>
+
+<ul>
+  <li>The nvidia-recent version is too old. I think the Ubuntu repostiry has not been updated for a while.</li>
+  <li>The installed driver will overwrite some GL files, which would cause a lot problem for screen display.</li>
+</ul>
+
+<p>Since we will install CUDA later and CUDA package includes the Nvidia driver, we can just download the CUDA driver and install the driver includes in the CUDA.</p>
+
+<p>I just download the newest <a href="https://developer.nvidia.com/cuda-downloads">CUDA 7</a>. The file I used is “.run”.</p>
+
+<p>Without installing any driver, Ubuntu uses a default driver for Nvidia cards called “nouveau driver”. Before we install the correct driver (from Nvidia), we need to turn this “nouveau” driver off. open the file “/etc/modprobe.d/blacklist.conf”,append the following at the end of the “conf” file:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>blacklist nouveau
+options nouveau modeset=0
+</code></pre>
+</div>
+
+<p>After this, we can install the Nvidia driver now. As we know, the Nvidia driver takes care of all graph display; so the “X” server and Ubuntu GUI needs to be closed. We can reboot the computer, in the login page, do NOT login, click “CTRL-ALT-F1” to drop to the terminal without GUI. Then turn off X server by:</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo service lightdm stop
+</code></pre>
+</div>
+
+<p>I also find out it is easy to operate this and the following by sudo as super user.</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo su
+</code></pre>
+</div>
+
+<p>Then extract “nvidia-driver”, “cuda”, and “cuda-examples”.</p>
+
+<ul>
+  <li>Step 1:
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">./&lt;cuda-archive-name&gt; </span>--extract<span class="o">=</span>&lt;your_fav_dir&gt;
+</code></pre>
+    </div>
+  </li>
+  <li>Step 2: Navigate to your_fav_dir, change all three extracted .run files to executable.
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> &lt;your_fav_dir&gt;
+sudo chmod +x NVIDIA-Linux-x86_64-346.46.run
+sudo chmod +x cuda-linux64-rel-7.0.28-19326674.run
+sudo chmod +x cuda-samples-linux-7.0.28-19326674.run
+</code></pre>
+    </div>
+  </li>
+  <li>Step 3:  Install the Nvidia driver by (<strong>this is the most important step</strong>)
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo ./&lt;NVIDIA_driver_run_name&gt; --no-opengl-files
+</code></pre>
+    </div>
+    <p>The –no-opengl-files option prevents overwriting of some GL files. If you don’t pass this your screen will freeze after login. Also, select ‘no’ when it asks you update the xorg.conf file.</p>
+  </li>
+  <li>
+    <p>Step 4: Reboot to normal, now you will see the screen resolution becomes good rightaway. You can verify through the Additional Drivers utility that you are using a manually installed driver.</p>
+  </li>
+  <li>Step 5: Navigate again to your_fav_dir and install the cuda toolkit and samples in pretty much the same manner (you don’t need to pass any special options now).</li>
+</ul>
+
+<p><strong>Enjoy CUDA !!</strong></p>
+
+<p>## Install Theano</p>
+
+<p>## Install Torch 7</p>
+
 
     </div>
     <div class="span4">
@@ -58,7 +131,13 @@ This is Shen Xu.
 
 <ul>
   
-    <li><a href="/2015/06/14/setup-deeplearning-machine/">Lorem Ipsum Dolor Sit Amet</a></li>
+    <li><a href="/2016/12/18/nn-infers-bayes/">Nn Infers Bayes</a></li>
+  
+    <li><a href="/2016/12/05/bayes-language/">Bayes Language</a></li>
+  
+    <li><a href="/2016/12/01/vae-is-easy-to-understand/">Vae Is Easy To Understand</a></li>
+  
+    <li><a href="/2015/06/14/setup-deeplearning-machine/">How to Setup a Deep Learning Machine</a></li>
   
 </ul>
 
