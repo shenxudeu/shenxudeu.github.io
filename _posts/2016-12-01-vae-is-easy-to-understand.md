@@ -7,7 +7,7 @@ Variational AutoEncoder (VAE) is Easy to Understand
 
 Before Everything 
 -----
-Every year, I want to do something for you on our anniversary, write a poem, sing a song, anything to express how grateful I have you as my wife, soul mate. Reality is, I'm just a boring man and do not know how to do those. I realized, one thing at least I might be good at, is research. Then I decide to write you this little technique article. Hope you can at least learn something, even if it may do nothing for your career. Hope you enjoy reading it, even if my English is not qualified. Most importantly, hope you feel my love. Happy 3rd anniversary, my darling.
+I assume you, like me, know a bit of neural networks.
 
 About 2 years ago, I started to study Deep Learning from online resources. Thanks to Andrej Karpathy's beautiful blog and course note, I start to understand Neural Networks and start to code the DeuNet. Time proves it was a right decision and effort. I guess my initial effort inspired you a bit to apply it on your own Ph.D research. Your handwork helped yourself land to current job, doing real AI research. 
 
