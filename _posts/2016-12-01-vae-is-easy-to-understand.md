@@ -9,9 +9,9 @@ Before Everything
 -----
 I assume you, like me, know a bit of neural networks.
 
-About 2 years ago, I started to study Deep Learning from online resources. Thanks to Andrej Karpathy's beautiful blog and course note, I start to understand Neural Networks and start to code the DeuNet. Time proves it was a right decision and effort. I guess my initial effort inspired you a bit to apply it on your own Ph.D research. Your handwork helped yourself land to current job, doing real AI research. 
+I assume you, also like me, have attempted many times to understand Bayesian modeling and have either failed or got lost.
 
-As well, I hope this initial research I have done will get you started on Bayesian modeling word. I believe Bayesian modeling is a non-avoidable field on your career. Bayesian people speaks a different language as NN people, which makes it unintuitive to understand. Among the hardest, there is no Andrej Karpathy yet on this topic. I spent a lot time during the past month, read a lot articles, paper, and code. This little is just a starting point, hope could lead us to a better and deeper understanding.
+After all, Bayesian people speaks a different language from NN people, which can be counterintuitive at times. Among the hardest, there is no Andrej Karpathy yet on this topic. I am not by any measure qualified to be that guy, but would just like to share a bit of what I've known.
 
 OK, let's get started.
 
