@@ -8,7 +8,7 @@ OK, let's start step by step. As usual, notations first. Very often, I would ign
 
 > **Notations**
 
-> - Uppercase $X$ denotes a **random variable**. Different with deterministic variable, random variable does not have a fixed value, but several possible values with probabilities. 
+> - Uppercase $$X$$ denotes a **random variable**. Different with deterministic variable, random variable does not have a fixed value, but several possible values with probabilities. 
 > - Uppercase $$$P(X)$$$ denotes the probability distribution over that variable. We can say $$$P(X) \~ N(0,1)$$$, which means this random variable generates value under a standard normal distribution.
 > - Lowercase $$$x \~ P(X)$$$ denotes a value $$$x$$$ sampled from the probability distribution $$$P(X)$$$ via some generative process.
 > - Lowercase $$$p(X)$$$ is the density function of the distribution of $$$X$$$. It is a scalar function over the measure space $$$X$$$.
