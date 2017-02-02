@@ -1,7 +1,7 @@
 Variational AutoEncoder (VAE) is Easy to Understand
 ==================================
 
-![image](/img/digits.gif)
+![image](/figures/digits.gif)
 
 ![image](figures/faces.png)
 
