@@ -5,7 +5,7 @@ layout: default
 
 # Hello World, This is Shen
 
-This is Shen. The name, in Chinese character, is 申, which is the archaic, alternative name of the Shanghai the city. No surprise, I was born in Shanghai, hence the name. 
+This is Shen. The name, in Chinese character, is 申, which is the archaic, alternative name of Shanghai the city. No surprise, I was born in Shanghai, hence the name. 
 
 I rarely write. When I do, it's either very technical or practical.
 
