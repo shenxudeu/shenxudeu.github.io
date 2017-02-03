@@ -4,9 +4,9 @@ layout: default
 ---
 # How to setup a Deep Learning Machine
 
-I spent sometime past few days to setup a new OS and related software for deep learning since I got a new GPU (GTX 980). 
+I spent sometime in past few days to setup a new OS and necessary softwares for deep learning since I got a new GPU (GTX 980). 
 
-I find out it is hard to setup a system running deep learning envrionment, especially the CUDA part. So I write it down this time and hopefully it would remind myself next and make sense to everyone.
+I found out it is hard to setup a system running deep learning envrionment, especially the CUDA part. A bunch of tricks would soon be forgotten if not written down. So I wrote it down this time and hopefully it would serve as a reminder for myself and make sense to everyone. (Although I'm pretty sure by the next time I need to probe this, things change.)
 
 ## Install Operting System
 
