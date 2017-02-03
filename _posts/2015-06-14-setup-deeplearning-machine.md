@@ -8,7 +8,7 @@ I spent sometime past few days to setup a new OS and related software for deep l
 
 I find out it is hard to setup a system running deep learning envrionment, especially the CUDA part. So I write it down this time and hopefully it would remind myself next and make sense to everyone.
 
-##Install Operting System
+## Install Operting System
 
 I just installed a Ubuntu 14.04 this time, because seems it is the most stable version until now. The installation is quite straight forward, download the image from [Utunbu website](http://www.ubuntu.com/download/desktop) and copy the image to USB drive and install it on the SSD.
 
@@ -75,8 +75,9 @@ The --no-opengl-files option prevents overwriting of some GL files. If you don't
  
  __Enjoy CUDA !!__
  
- ## Install Theano
  
- ## Install Torch 7
+## Install Theano
+
+## Install Torch 7
 
 
