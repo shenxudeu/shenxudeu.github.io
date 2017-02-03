@@ -5,10 +5,12 @@ layout: default
 
 # Hello World, This is Shen
 
-Proin eleifend libero accumsan felis luctus nec consectetur purus commodo. Phasellus sodales est nec massa imperdiet commodo. Maecenas risus nulla, placerat vel vestibulum vel, dapibus quis libero.
+This is Shen. The name, in Chinese character, is 申, which is the archaic, alternative name of the Shanghai the city. No surprise, I was born in Shanghai, hence the name. 
 
-Donec libero libero, bibendum non condimentum ac, ullamcorper at sapien. Duis feugiat urna vel justo cursus facilisis. Vivamus ligula dui, convallis a varius vitae, facilisis eget magna.:w
+I rarely write. When I do, it's either very technical or practical.
 
+And you may find grammer mistakes in my English here and there.
 
-$\delta$
+But um, bear with me, if you will?
+
 
