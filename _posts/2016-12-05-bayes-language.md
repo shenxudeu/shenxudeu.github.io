@@ -13,12 +13,13 @@ OK, let's start one step at a time. As usual, notations first. Very often, I wou
 > - Lowercase $$p(X)$$ is the density function of the distribution of $$X$$. It is a scalar function over the measure space $$X$$.
 > - $$p(X=x)$$ (shorthand $$p(x)$$) denotes the density function evaluated at a particular value $$x$$.
 
+
 Now, let's take a look at the first step. Normally, we are trying to model a dataset from a probability view. For example, we have an image of cat. The pixels in the image is our data (**observation** variable $$X$$ in probability view). We believe this observable variable is generated from a hidden (latent) variable $$Z$$, which can be a binary variable (cat or non-cat). We can draw this relationship via the following graph:
 ![image]({{ site.baseurl  }}/img/hidden_observation.png )
 
 The edge drawn from $$Z$$ to $$X$$ relates the two variables together via the conditional distribution $$P(X|Z)$$. Now, it's important to jump out of the graph and conditional probability, think about the problem we try to solve, which is given the image, is this an image of cat or not? In the probability language, what's the conditional probability $$P(Z|X)$$? Even if we modeled the graph, what we got is the $$P(X|Z)$$, how can we get to the problem we are interested? **Bayesian** comes to play here.
 
-$$p(Z|X)=\frac{p(X|Z)p(Z)}{p(X)}$$
+$p(Z|X)=\frac{p(X|Z)p(Z)}{p(X)}$
 
 Let's assume we can model the graph $$p(X|Z)$$ somehow. We can get the final answer if we got $$p(Z)$$ and $$p(X)$$. In **Bayesian Language**, we have some names for all those math terms. They are just names, but would help you to read paper and discuss with "experts".
 
