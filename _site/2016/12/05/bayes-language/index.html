@@ -12,34 +12,42 @@ I have tried to conquer Bayesian modeling several times since 2010 (in the middl
 <blockquote>
   <ul>
     <li>Uppercase <script type="math/tex">X</script> denotes a <strong>random variable</strong>. Different with deterministic variable, random variable does not have a fixed value, but several possible values with probabilities.</li>
-    <li>Uppercase <script type="math/tex">$P(X)</script>$ denotes the probability distribution over that variable. We can say <script type="math/tex">$P(X) \~ N(0,1)</script>$, which means this random variable generates value under a standard normal distribution.</li>
-    <li>Lowercase <script type="math/tex">$x \~ P(X)</script>$ denotes a value <script type="math/tex">$x</script>$ sampled from the probability distribution <script type="math/tex">$P(X)</script>$ via some generative process.</li>
-    <li>Lowercase <script type="math/tex">$p(X)</script>$ is the density function of the distribution of <script type="math/tex">$X</script>$. It is a scalar function over the measure space <script type="math/tex">$X</script>$.</li>
-    <li><script type="math/tex">$p(X=x)</script>$ (shorthand <script type="math/tex">$p(x)</script>$) denotes the density function evaluated at a particular value <script type="math/tex">$x</script>$.</li>
+    <li>Uppercase <script type="math/tex">P(X)</script> denotes the probability distribution over that variable. We can say <script type="math/tex">$P(X) \~ N(0,1)</script>$, which means this random variable generates value under a standard normal distribution.</li>
+    <li>Lowercase <script type="math/tex">x \~ P(X)</script> denotes a value <script type="math/tex">x</script> sampled from the probability distribution <script type="math/tex">P(X)</script> via some generative process.</li>
+    <li>Lowercase <script type="math/tex">p(X)</script> is the density function of the distribution of <script type="math/tex">X</script>. It is a scalar function over the measure space <script type="math/tex">X</script>.</li>
+    <li><script type="math/tex">p(X=x)</script> (shorthand <script type="math/tex">p(x)</script>) denotes the density function evaluated at a particular value <script type="math/tex">x</script>.</li>
   </ul>
 </blockquote>
 
-<p>Now, let’s take a look at the first step. Normally, we are trying to model a dataset from a probability view. For example, we have an image of cat. The pixels in the image is our data (<strong>observation</strong> variable <script type="math/tex">$X</script>$ in probability view). We believe this observable variable is generated from a hidden (latent) variable <script type="math/tex">$Z</script>$, which can be a binary variable (cat or non-cat). We can draw this relationship via the following graph:
+<p>Now, let’s take a look at the first step. Normally, we are trying to model a dataset from a probability view. For example, we have an image of cat. The pixels in the image is our data (<strong>observation</strong> variable <script type="math/tex">X</script> in probability view). We believe this observable variable is generated from a hidden (latent) variable <script type="math/tex">Z</script>, which can be a binary variable (cat or non-cat). We can draw this relationship via the following graph:
 <img src="/img/hidden_observation.png" alt="image" /></p>
 
 <table>
   <tbody>
     <tr>
-      <td>The edge drawn from <script type="math/tex">$Z</script>$ to <script type="math/tex">$X</script>$ relates the two variables together via the conditional distribution $$$P(X</td>
-      <td>Z)<script type="math/tex">$. Now, it's important to jump out of the graph and conditional probability, think about the problem we try to solve, which is given the image, is this an image of cat or not? In the probability language, what's the conditional probability</script>$P(Z</td>
-      <td>X)<script type="math/tex">$? Even if we modeled the graph, what we got is the</script>$P(X</td>
-      <td>Z)$$$, how can we get to the problem we are interested? <strong>Bayesian</strong> comes to play here.</td>
+      <td>The edge drawn from <script type="math/tex">Z</script> to <script type="math/tex">X</script> relates the two variables together via the conditional distribution $$P(X</td>
+      <td>Z)<script type="math/tex">. Now, it's important to jump out of the graph and conditional probability, think about the problem we try to solve, which is given the image, is this an image of cat or not? In the probability language, what's the conditional probability</script>P(Z</td>
+      <td>X)<script type="math/tex">? Even if we modeled the graph, what we got is the</script>P(X</td>
+      <td>Z)$$, how can we get to the problem we are interested? <strong>Bayesian</strong> comes to play here.</td>
     </tr>
   </tbody>
 </table>
 
-<script type="math/tex; mode=display">p(Z|X)=\frac{p(X|Z)p(Z)}{p(X)}</script>
+<table>
+  <tbody>
+    <tr>
+      <td>$p(Z</td>
+      <td>X)=\frac{p(X</td>
+      <td>Z)p(Z)}{p(X)}$</td>
+    </tr>
+  </tbody>
+</table>
 
 <table>
   <tbody>
     <tr>
-      <td>Let’s assume we can model the graph $$$p(X</td>
-      <td>Z)<script type="math/tex">$ somehow. We can get the final answer if we got</script>$p(Z)<script type="math/tex">$ and</script>$p(X)$$$. In <strong>Bayesian Language</strong>, we have some names for all those math terms. They are just names, but would help you to read paper and discuss with “experts”.</td>
+      <td>Let’s assume we can model the graph $$p(X</td>
+      <td>Z)<script type="math/tex">somehow. We can get the final answer if we got</script>p(Z)<script type="math/tex">and</script>p(X)$$. In <strong>Bayesian Language</strong>, we have some names for all those math terms. They are just names, but would help you to read paper and discuss with “experts”.</td>
     </tr>
   </tbody>
 </table>
@@ -54,8 +62,8 @@ I have tried to conquer Bayesian modeling several times since 2010 (in the middl
       <table>
         <tbody>
           <tr>
-            <td>$$$p(Z</td>
-            <td>X)$$$ is the <strong>posterior probability</strong>. This is the most important term in Bayesian modeling, because this is the question we are interested.</td>
+            <td>$$p(Z</td>
+            <td>X)$$ is the <strong>posterior probability</strong>. This is the most important term in Bayesian modeling, because this is the question we are interested.</td>
           </tr>
         </tbody>
       </table>
@@ -64,14 +72,14 @@ I have tried to conquer Bayesian modeling several times since 2010 (in the middl
       <table>
         <tbody>
           <tr>
-            <td>$$$p(X</td>
-            <td>Z)<script type="math/tex">$ it the **likelihood**. It means given the hidden variable</script>$Z<script type="math/tex">$, how likely it generates observed images as we have seen in training data. Building this is building the graph. The famous term "maximum likelihood estimation" is one way to solve this. It tries to find the best hidden variable</script>$Z$$$ to lead to good likelihood.</td>
+            <td>$$p(X</td>
+            <td>Z)<script type="math/tex">it the **likelihood**. It means given the hidden variable</script>Z<script type="math/tex">, how likely it generates observed images as we have seen in training data. Building this is building the graph. The famous term "maximum likelihood estimation" is one way to solve this. It tries to find the best hidden variable</script>Z$$ to lead to good likelihood.</td>
           </tr>
         </tbody>
       </table>
     </li>
-    <li><script type="math/tex">$p(Z)</script>$ is the <strong>prior probability</strong>. This captures any prior information we know about <script type="math/tex">$Z</script>$ - for example, if we think that <script type="math/tex">$\frac{1}{3}</script>$ of all images in existence are of cats, then <script type="math/tex">$p(Z=1)=\frac{1}{3}</script>$ and <script type="math/tex">$p(Z=0)=\frac{2}{3}</script>$</li>
-    <li><script type="math/tex">$p(X)</script>$ is called <strong>model evidence</strong> or <strong>marginal likelihood</strong>. The way to compute this is marginalizing the likelihood over hidden variable <script type="math/tex">$Z</script>$. 
+    <li><script type="math/tex">p(Z)</script> is the <strong>prior probability</strong>. This captures any prior information we know about <script type="math/tex">Z</script> - for example, if we think that <script type="math/tex">\frac{1}{3}</script> of all images in existence are of cats, then <script type="math/tex">p(Z=1)=\frac{1}{3}</script> and <script type="math/tex">p(Z=0)=\frac{2}{3}</script></li>
+    <li><script type="math/tex">p(X)</script> is called <strong>model evidence</strong> or <strong>marginal likelihood</strong>. The way to compute this is marginalizing the likelihood over hidden variable <script type="math/tex">Z</script>. 
 <script type="math/tex">p(X) = \int{p(X|Z=z)p(Z=z)}dz</script></li>
     <li>Marginalization is the bread and butter of Bayesian modeling, because this gives us the model uncertainty.</li>
   </ul>
@@ -84,9 +92,9 @@ I have tried to conquer Bayesian modeling several times since 2010 (in the middl
 <table>
   <tbody>
     <tr>
-      <td>This is the structure graph of Naive Bayesian classifier. Very similar to the previous graph, but with one assumption, all the observations are conditional independent given the hidden variable. Let’s say we have 3 observed binary variables <script type="math/tex">$X_1, X_2 and X_3</script>$ and one binary hidden variable <script type="math/tex">$X, Z=\\{0,1\\}</script>$. Given a dataset containing the observed variables and hidden variables value <script type="math/tex">% <![CDATA[
-$<X, Z> %]]></script>$, how can we learn the graph and how to do the inference (solve the posterior probability) $$$p(Z=1</td>
-      <td>X_1=1,X_2=0,X_3=1)$$$?</td>
+      <td>This is the structure graph of Naive Bayesian classifier. Very similar to the previous graph, but with one assumption, all the observations are conditional independent given the hidden variable. Let’s say we have 3 observed binary variables <script type="math/tex">X_1, X_2 and X_3</script> and one binary hidden variable <script type="math/tex">X, Z=\\{0,1\\}</script>. Given a dataset containing the observed variables and hidden variables value <script type="math/tex">% <![CDATA[
+<X, Z> %]]></script>, how can we learn the graph and how to do the inference (solve the posterior probability) $$p(Z=1</td>
+      <td>X_1=1,X_2=0,X_3=1)$$?</td>
     </tr>
   </tbody>
 </table>
@@ -94,38 +102,44 @@ $<X, Z> %]]></script>$, how can we learn the graph and how to do the inference (
 <table>
   <tbody>
     <tr>
-      <td>As we have shown above, in order to solve the posterior probability, we need to learn the likelihood $$$p(X</td>
-      <td>Z)<script type="math/tex">$, the prior</script>$p(Z)<script type="math/tex">$ and the model evidence</script>$p(X)$$$.</td>
+      <td>As we have shown above, in order to solve the posterior probability, we need to learn the likelihood $$p(X</td>
+      <td>Z)<script type="math/tex">, the prior</script>p(Z)<script type="math/tex">and the model evidence</script>p(X)$$.</td>
     </tr>
   </tbody>
 </table>
 
-<p>It’s easy to get the prior <script type="math/tex">$p(Z=1)</script>$, just estimate it from the training data 
-<script type="math/tex">p(Z=1) = \frac{\\#Z==1}{\\#Total}</script></p>
+<p>It’s easy to get the prior <script type="math/tex">p(Z=1)</script>, just estimate it from the training data 
+$p(Z=1) = \frac{\#Z==1}{\#Total}$</p>
 
 <table>
   <tbody>
     <tr>
-      <td>Hard part is the likelihood, $$$p(X_1=x_1,X_2=x_2,X_3=x_3</td>
-      <td>Z=1)$$$, which is a conditional joint probability. Thanks to the independency assumption of Naive Bayes, we can write this likelihood like this:</td>
+      <td>Hard part is the likelihood, $$p(X_1=x_1,X_2=x_2,X_3=x_3</td>
+      <td>Z=1)$$, which is a conditional joint probability. Thanks to the independency assumption of Naive Bayes, we can write this likelihood like this:</td>
       <td> </td>
       <td> </td>
       <td> </td>
     </tr>
     <tr>
-      <td>$$p(X_1=x_1,X_2=x_2,X_3=x_3</td>
+      <td>$p(X_1=x_1,X_2=x_2,X_3=x_3</td>
       <td>Z=1) = p(X_1=x_1</td>
       <td>Z=1)p(X_2=x_2</td>
       <td>Z=1)p(X_3=x_3</td>
-      <td>Z=1)$$</td>
+      <td>Z=1)$</td>
     </tr>
   </tbody>
 </table>
 
 <p>Compute the conditional probability with one variable is easy:</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)} %]]></script>
+<table>
+  <tbody>
+    <tr>
+      <td>$p(X_i</td>
+      <td>Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\#(X_i \&amp; Z)}{\#(Z)}$</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>The model evidence is just a integral of those posteriors.</p>
 
@@ -135,15 +149,32 @@ p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)} %]]></script>
 
 <p><img src="/img/real_graph.png" alt="image" /></p>
 
-<p>This is a graph defines more complicated and real life problem. Given the training inputs <script type="math/tex">$X=\\{x_1,...,x_N\\}</script>$ and their corresponding outputs <script type="math/tex">$Y=\\{y_1,...,y_N\\}</script>$, in <strong>Bayesian (parametric) modeling</strong>, we would like to find the parameters <script type="math/tex">$\theta</script>$ of a function <script type="math/tex">$y=f^{\theta}(x)</script>$ that are likely to have generated our outputs. In another word, what parameters are likely to have generated out data?</p>
+<p>This is a graph defines more complicated and real life problem. Given the training inputs <script type="math/tex">X=\\{x_1,...,x_N\\}</script> and their corresponding outputs <script type="math/tex">Y=\\{y_1,...,y_N\\}</script>, in <strong>Bayesian (parametric) modeling</strong>, we would like to find the parameters <script type="math/tex">\theta</script> of a function <script type="math/tex">y=f^{\theta}(x)</script> that are likely to have generated our outputs. In another word, what parameters are likely to have generated out data?</p>
 
-<p>The <strong>model forward (testing/inference)</strong> is not the posterior probability anymore. Given a new input point <script type="math/tex">$x'</script>$ and the training data, we would like to infer what’s the probability of corresponding value of <script type="math/tex">$y</script>$</p>
+<p>The <strong>model forward (testing/inference)</strong> is not the posterior probability anymore. Given a new input point <script type="math/tex">$x'</script>$ and the training data, we would like to infer what’s the probability of corresponding value of <script type="math/tex">y</script></p>
 
-<script type="math/tex; mode=display">p(y'|x', X, Y) = \int{p(y|x', \theta)p(\theta|X,Y)d\theta}</script>
+<table>
+  <tbody>
+    <tr>
+      <td>$p(y’</td>
+      <td>x’, X, Y) = \int{p(y</td>
+      <td>x’, \theta)p(\theta</td>
+      <td>X,Y)d\theta}$</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>It can also be written as</p>
 
-<script type="math/tex; mode=display">p(y'|x', X, Y) = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}</script>
+<table>
+  <tbody>
+    <tr>
+      <td>$p(y’</td>
+      <td>x’, X, Y) = \int{f_{\theta}(x’)p(\theta</td>
+      <td>X,Y)d\theta}$</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>We can see that is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, <script type="math/tex">$\theta</script>$ is not one best value, but a set of possible values with corresponding probabilities. Comparing with the “Bayesian Language” shown above, we need to slightly modify the language definition.</p>
 
@@ -157,10 +188,10 @@ p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)} %]]></script>
       <table>
         <tbody>
           <tr>
-            <td><strong>Posterior Probability</strong> $$$p(\theta</td>
+            <td><strong>Posterior Probability</strong> $$p(\theta</td>
             <td>X,Y) = \frac{p(Y</td>
             <td>X,\theta)p(\theta)}{p(Y</td>
-            <td>X)}$$$</td>
+            <td>X)}$$</td>
           </tr>
         </tbody>
       </table>
@@ -169,20 +200,20 @@ p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)} %]]></script>
       <table>
         <tbody>
           <tr>
-            <td><strong>Likelihood</strong> $$$p(Y</td>
-            <td>X,\theta)$$$</td>
+            <td><strong>Likelihood</strong> $$p(Y</td>
+            <td>X,\theta)$$</td>
           </tr>
         </tbody>
       </table>
     </li>
-    <li><strong>Prior Probability</strong> <script type="math/tex">$p(\theta)</script>$</li>
+    <li><strong>Prior Probability</strong> <script type="math/tex">p(\theta)</script></li>
     <li>
       <table>
         <tbody>
           <tr>
-            <td><strong>Model Evidence</strong> $$$p(Y</td>
+            <td><strong>Model Evidence</strong> $$p(Y</td>
             <td>X) = \int{p(Y</td>
-            <td>X,\theta)p(\theta)d\theta}$$$</td>
+            <td>X,\theta)p(\theta)d\theta}$$</td>
           </tr>
         </tbody>
       </table>
@@ -193,16 +224,16 @@ p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)} %]]></script>
 <table>
   <tbody>
     <tr>
-      <td>The same as previous examples, the most important part is the posterior $$$p(\theta</td>
-      <td>X,Y)$$$. It cannot usually be evaluated analytically. Instead we seek some estimations such as MC based sampling method or by an approximating <strong>variational distribution</strong></td>
+      <td>The same as previous examples, the most important part is the posterior $$p(\theta</td>
+      <td>X,Y)$$. It cannot usually be evaluated analytically. Instead we seek some estimations such as MC based sampling method or by an approximating <strong>variational distribution</strong></td>
     </tr>
   </tbody>
 </table>
 
 <p>One more point I need to make here is, the output of Bayesian inference is not just a value, but an expectation value and uncertainty. If we deal with the regression problem, the inference can be express as Gaussian likelihood.</p>
 
-<p><script type="math/tex">\mathbf{E}(y') = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}</script> 
-<script type="math/tex">var(y') = \tau^{-1} I</script></p>
+<p>$\mathbf{E}(y’) = \int{f_{\theta}(x’)p(\theta|X,Y)d\theta}$
+$var(y’) = \tau^{-1} I$</p>
 
 <p>If we deal with classification problem, the expectation is softmax likelihood. <a href="http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html">Yarin Gal</a> described a way to extract prediction exception in a Bayesian view from Neural Network with dropout, which provides a good link between NN and Bayesian modeling.</p>
 

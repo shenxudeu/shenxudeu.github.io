@@ -7,5 +7,5 @@ url: "http://shenxudeu.github.io"
 github_username:  shenxudeu
 
 # Build settings
-markdown: maruku
+#markdown: maruku
 permalink: pretty
