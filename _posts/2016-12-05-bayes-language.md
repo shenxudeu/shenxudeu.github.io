@@ -1,6 +1,10 @@
 Bayesian Language
+{% raw %}
+<!-- The Normal Distribution -->
+<div class="equation" data-expr="\displaystyle P(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma ^2}}"></div>
+{% endraw %}
 -----
-I have studied Bayesian modeling several times since 2010, read a lot paper, couple of books, and some online classes. Yes, you can remember math terms, follow what they said in paper, sometimes even the equation derivations. But I never really understand what's going on behind those equations. That's the reason I have to repeat the classes, but stuck in a loop. Every time I learn it, I thought I got the idea, and over and over again. 
+I $$X_i+ y$$ have studied Bayesian modeling several times since 2010, read a lot paper, couple of books, and some online classes. Yes, you can remember math terms, follow what they said in paper, sometimes even the equation derivations. But I never really understand what's going on behind those equations. That's the reason I have to repeat the classes, but stuck in a loop. Every time I learn it, I thought I got the idea, and over and over again. 
 
 That's because there is a Bayesian language and way to think about data modeling, which is different with deterministic modeling such as Neural Networks. We should try to link every concept in Bayesian to Neural Networks. Because they are trying to solve the same problem (regression or classification) by slight different ways. Also, as we have seen in last section, the VAE can be expressed in a Neural network. People have done a lot of research to link them already, another example is the link between Gaussian Naive Bayes classifier and logistic regression. (from [Andrew Ng.](https://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf)).
 
@@ -88,4 +92,15 @@ $$var(y') = \tau^{-1} I$$
 If we deal with classification problem, the expectation is softmax likelihood. [Yarin Gal](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html) described a way to extract prediction exception in a Bayesian view from Neural Network with dropout, which provides a good link between NN and Bayesian modeling. 
 
 
+<script type="text/javascript">
 
+    // grab all elements in DOM with the class 'equation'
+        var tex = document.getElementsByClassName("equation");
+
+            // for each element, render the expression attribute
+        Array.prototype.forEach.call(tex, function(el) {
+                    katex.render(el.getAttribute("data-expr"), el);
+                        
+                });
+
+        </script>

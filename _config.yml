@@ -1,11 +1,11 @@
 # Site settings
 title: Shen Xu Personal Website
 email: leoxushen@gmail.com
-description: "Course materials and notes for Stanford class CS231n: Convolutional Neural Networks for Visual Recognition."
+description: "Personal Webpage"
 baseurl: ""
 url: "http://shenxudeu.github.io"
 github_username:  shenxudeu
 
 # Build settings
-#markdown: redcarpet
+markdown: maruku
 permalink: pretty
