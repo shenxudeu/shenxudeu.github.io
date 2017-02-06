@@ -4,11 +4,11 @@ layout: default
 ---
 # How to setup a Deep Learning Machine
 
-I spent sometime past few days to setup a new OS and related software for deep learning since I got a new GPU (GTX 980). 
+I spent sometime in past few days to setup a new OS and necessary softwares for deep learning since I got a new GPU (GTX 980). 
 
-I find out it is hard to setup a system running deep learning envrionment, especially the CUDA part. So I write it down this time and hopefully it would remind myself next and make sense to everyone.
+I found out it is hard to setup a system running deep learning envrionment, especially the CUDA part. A bunch of tricks would soon be forgotten if not written down. So I wrote it down this time and hopefully it would serve as a reminder for myself and make sense to everyone. (Although I'm pretty sure by the next time I need to probe this, things change.)
 
-##Install Operting System
+## Install Operting System
 
 I just installed a Ubuntu 14.04 this time, because seems it is the most stable version until now. The installation is quite straight forward, download the image from [Utunbu website](http://www.ubuntu.com/download/desktop) and copy the image to USB drive and install it on the SSD.
 
@@ -75,8 +75,9 @@ The --no-opengl-files option prevents overwriting of some GL files. If you don't
  
  __Enjoy CUDA !!__
  
- ## Install Theano
  
- ## Install Torch 7
+## Install Theano
+
+## Install Torch 7
 
 
