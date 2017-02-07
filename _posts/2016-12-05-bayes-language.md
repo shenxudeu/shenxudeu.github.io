@@ -35,3 +35,70 @@ Let's assume we can model the graph \\(p(X\|Z)\\) somehow. We can get the final 
 > - Marginalization is the bread and butter of Bayesian modeling, because this gives us the model uncertainty.
 
 
+This is the Bayesian language. It's easy to follow, but too **abstract** to understand, right? Because everything here is probability, but not straight-forward equations we can code up. I'm agree, and feel the same. Now, let's visualize it through a simple example under **Naive Bayesian Classifier**.  
+
+![image]({{ site.baseurl  }}/img/naive_bayes.png )
+
+This is the structure graph of Naive Bayesian classifier. Very similar to the previous graph, but with one assumption, all the observations are conditional independent given the hidden variable. Let's say we have 3 observed binary variables $$X_1, X_2 and X_3$$ and one binary hidden variable $$X, Z=\\{0,1\\}$$. Given a dataset containing the observed variables and hidden variables value $$<X, Z>$$, how can we learn the graph and how to do the inference (solve the posterior probability) \\(p(Z=1|X_1=1,X_2=0,X_3=1)\\)?  
+
+As we have shown above, in order to solve the posterior probability, we need to learn the likelihood \\(p(X|Z)\\), the prior $$p(Z)$$ and the model evidence $$p(X)$$. 
+
+It's easy to get the prior $$p(Z=1)$$, just estimate it from the training data 
+$p(Z=1) = \frac{\\#Z==1}{\\#Total}$
+
+Hard part is the likelihood, \\(p(X_1=x_1,X_2=x_2,X_3=x_3|Z=1)\\), which is a conditional joint probability. Thanks to the independency assumption of Naive Bayes, we can write this likelihood like this:
+$$
+p(X_1=x_1,X_2=x_2,X_3=x_3|Z=1) = p(X_1=x_1|Z=1)p(X_2=x_2|Z=1)p(X_3=x_3|Z=1)
+$$
+
+Compute the conditional probability with one variable is easy:
+
+$$
+p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)}
+$$
+
+The model evidence is just a integral of those posteriors.
+
+
+Now, hope we have a clear picture how does Bayes model works. Keep in mind, the posterior is easy under the Naive Bayes assumptions, but hard ('nontrackable') in most cases. You can imagine it would be even harder to compute the model evidence. 
+
+Until now, I guess you may have the same question as I have. The "hidden variable" is our target, which is observable in the training data. Many situations, the real "hidden variable" is the variables we do not even know in the training data, such as some edge features in the image. How can we define these kind of problem? How can we present them in the graph?
+
+![image]({{ site.baseurl  }}/img/real_graph.png )
+
+This is a graph defines more complicated and real life problem. Given the training inputs $$X=\\{x_1,...,x_N\\}$$ and their corresponding outputs $$Y=\\{y_1,...,y_N\\}$$, in **Bayesian (parametric) modeling**, we would like to find the parameters $$\theta$$ of a function $$y=f^{\theta}(x)$$ that are likely to have generated our outputs. In another word, what parameters are likely to have generated out data?
+
+The **model forward (testing/inference)** is not the posterior probability anymore. Given a new input point $$$x'$$$ and the training data, we would like to infer what's the probability of corresponding value of $$y$$
+
+$$
+p(y'|x', X, Y) = \int{p(y|x', \theta)p(\theta|X,Y)d\theta}
+$$
+
+It can also be written as 
+
+$$
+p(y'|x', X, Y) = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}
+$$
+
+We can see that is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, $$$\theta$$$ is not one best value, but a set of possible values with corresponding probabilities. Comparing with the "Bayesian Language" shown above, we need to slightly modify the language definition. 
+
+> **Bayesian Language Update**
+
+> - **Posterior Probability** \\(p(\theta|X,Y) = \frac{p(Y|X,\theta)p(\theta)}{p(Y|X)}\\)
+> - **Likelihood** \\(p(Y|X,\theta)\\)
+> - **Prior Probability** $$p(\theta)$$
+> - **Model Evidence** \\(p(Y|X) = \int{p(Y|X,\theta)p(\theta)d\theta}\\)
+
+The same as previous examples, the most important part is the posterior \\(p(\theta|X,Y)\\). It cannot usually be evaluated analytically. Instead we seek some estimations such as MC based sampling method or by an approximating **variational distribution**
+
+One more point I need to make here is, the output of Bayesian inference is not just a value, but an expectation value and uncertainty. If we deal with the regression problem, the inference can be express as Gaussian likelihood.
+
+$$
+\mathbf{E}(y') = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}
+$$
+
+$$
+var(y') = \tau^{-1} I
+$$
+
+If we deal with classification problem, the expectation is softmax likelihood. [Yarin Gal](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html) described a way to extract prediction exception in a Bayesian view from Neural Network with dropout, which provides a good link between NN and Bayesian modeling. 
