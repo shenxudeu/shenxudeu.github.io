@@ -42,7 +42,7 @@ This is the Bayesian language. It's easy to follow, but too **abstract** to unde
 
 This is the structure graph of Naive Bayesian classifier. Very similar to the previous graph, but with one assumption, all the observations are conditional independent given the hidden variable. Let's say we have 3 observed binary variables $$X_1$$, $$X_2$$ and $$X_3$$ and one binary hidden variable $$X, Z=\{0,1\}$$. Given a dataset containing the observed variables and hidden variables value $$<X, Z>$$, how can we learn the graph and how to do the inference (solve the posterior probability) \\(p(Z=1\|X_1=1,X_2=0,X_3=1)\\)?  
 
-As we have shown above, in order to solve the posterior probability, we need to learn the likelihood \\(p(X|Z)\\), the prior $$p(Z)$$ and the model evidence $$p(X)$$. 
+As we have shown above, in order to solve the posterior probability, we need to learn the likelihood \\(p(X\|Z)\\), the prior $$p(Z)$$ and the model evidence $$p(X)$$. 
 
 It's easy to get the prior $$p(Z=1)$$, just estimate it from the training data 
 $$p(Z=1) = \frac{\\#Z==1}{\\#Total}$$
