@@ -19,9 +19,5 @@ Now, let's take a look at the first step. Normally, we are trying to model a dat
 ![image]({{ site.baseurl  }}/img/hidden_observation.png )
 
 
-The edge drawn from $$Z$$ to $$X$$ relates the two variables together via the conditional distribution $$P(X | Z)$$. 
-Now, it's important to jump out of the graph and conditional probability, think about the problem we try to solve, which is given the image, is this an image of cat or not? In the probability language, what's the conditional probability $$P(Z|X)$$? Even if we modeled the graph, what we got is the $$P(X|Z)$$, how can we get to the problem we are interested? **Bayesian** comes to play here.
-
-
 
 
