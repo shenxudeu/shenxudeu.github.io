@@ -20,7 +20,9 @@ Now, let's take a look at the first step. Normally, we are trying to model a dat
 
 The edge drawn from $$Z$$ to $$X$$ relates the two variables together via the conditional distribution $$P(X \| Z)$$. Now, it's important to jump out of the graph and conditional probability, think about the problem we try to solve, which is given the image, is this an image of cat or not? In the probability language, what's the conditional probability $$P(Z\|X)$$? Even if we modeled the graph, what we got is the $$P(X\|Z)$$, how can we get to the problem we are interested? **Bayesian** comes to play here.
 
-<div>$p(Z|X)=\frac{p(X|Z)p(Z)}{p(X)}$</div>
+$$
+p(Z|X)=\frac{p(X|Z)p(Z)}{p(X)}
+$$
 
 Let's assume we can model the graph $$p(X\|Z)$$ somehow. We can get the final answer if we got $$p(Z)$$ and $$p(X)$$. In **Bayesian Language**, we have some names for all those math terms. They are just names, but would help you to read paper and discuss with "experts".
 
