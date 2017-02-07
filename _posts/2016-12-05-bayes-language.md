@@ -9,13 +9,14 @@ OK, let's start one step at a time. As usual, notations first. Very often, I wou
 > **Notations**
 
 > - Uppercase $$X$$ denotes a **random variable**. Different with deterministic variable, random variable does not have a fixed value, but several possible values with probabilities. 
-> - Uppercase $$P(X)$$ denotes the probability distribution over that variable. We can say $$$P(X) \~ N(0,1)$$$, which means this random variable generates value under a standard normal distribution.
-> - Lowercase $$x \~ P(X)$$ denotes a value $$x$$ sampled from the probability distribution $$P(X)$$ via some generative process.
+> - Uppercase $$P(X)$$ denotes the probability distribution over that variable. We can say $$P(X) ~ N(0,1)$$, which means this random variable generates value under a standard normal distribution.
+> - Lowercase $$x ~ P(X)$$ denotes a value $$x$$ sampled from the probability distribution $$P(X)$$ via some generative process.
 > - Lowercase $$p(X)$$ is the density function of the distribution of $$X$$. It is a scalar function over the measure space $$X$$.
 > - $$p(X=x)$$ (shorthand $$p(x)$$) denotes the density function evaluated at a particular value $$x$$.
 
 
 Now, let's take a look at the first step. Normally, we are trying to model a dataset from a probability view. For example, we have an image of cat. The pixels in the image is our data (**observation** variable $$X$$ in probability view). We believe this observable variable is generated from a hidden (latent) variable $$Z$$, which can be a binary variable (cat or non-cat). We can draw this relationship via the following graph:
+
 ![image]({{ site.baseurl  }}/img/hidden_observation.png )
 
 The edge drawn from $$Z$$ to $$X$$ relates the two variables together via the conditional distribution $$P(X|Z)$$. Now, it's important to jump out of the graph and conditional probability, think about the problem we try to solve, which is given the image, is this an image of cat or not? In the probability language, what's the conditional probability $$P(Z|X)$$? Even if we modeled the graph, what we got is the $$P(X|Z)$$, how can we get to the problem we are interested? **Bayesian** comes to play here.
