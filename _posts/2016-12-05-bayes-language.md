@@ -1,4 +1,7 @@
 Bayesian Language
+
+-----
+
 I have tried to conquer Bayesian modeling several times since 2010 (in the middle of a PhD term which I eventually dropped out of), read a lot paper, couple of books, and took some online classes. Yes, you can remember math terms, you may follow what they say in the paper when you are reading it, you may even be able to derive the equations just as they do. But what's hard is to really understand what's going on behind those equations, without which you are bound to forget what you think you know after a while. Therefore you might need to repeat the learning process, however only to find you stuck in a loop.
 
 That's because there is a Bayesian language and way to think about data modeling, which is different from deterministic modeling such as Neural Networks. Natually, there should be a way to link every concept in Bayesian to Neural Networks. Because they are trying to solve the same problem (regression or classification) by slight different ways. Also, as we have already seen in the last section, VAE can be expressed in a Neural network. People have done a lot of research to link them already, another example is the link between Gaussian Naive Bayes classifier and logistic regression. (from [Andrew Ng.](https://www.cs.cmu.edu/~tom/mlbook/NBayesLogReg.pdf)).
