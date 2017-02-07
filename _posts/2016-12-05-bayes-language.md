@@ -19,7 +19,6 @@ Now, let's take a look at the first step. Normally, we are trying to model a dat
 
 ![image]({{ site.baseurl  }}/img/hidden_observation.png )
 
-The edge drawn from $$Z$$ to $$X$$ relates the two variables together via the conditional distribution $$P(X|Z)$$. 
 
 
 
