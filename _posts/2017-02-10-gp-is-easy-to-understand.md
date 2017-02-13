@@ -2,6 +2,8 @@ Gaussian Process (GP) is Easy to Understand
 ==================================
 
 INSERT A PRETTY GP CHART.
+![]({{ site.baseurl  }}/img/pg_pretty_chart.png)
+
 
 In the beginning 
 ----
@@ -171,6 +173,47 @@ y_test_var = np.dot(np.dot(X_test, np.linalg.inv(A)),X_test.T)
 
 We can also plot the predicted values with \\(+/- 3 \sigma\\) lines.
 ![]({{ site.baseurl  }}/img/linear_predictions.png)
+
+
+#### Linear Regression Expansion with Basis Functions and Kernel Trick
+
+The linear model looks good if we believe our data follows the linear relationship between input and output, but it's hard to catch any more complicated relationships. Remember in our Bayesian view of model prediction:
+
+$$
+P(y_*\mid x_*, X, y) = \int P(y_*\mid x_*, w)P(w \mid X, y) dw 
+$$
+
+We evaluate every possible \\(w\\) and weighted average them to make our final prediction. What if we consider __every function__ instead of __every weight__? Then our prediction becomes to the weighted average of all __possible functions__.
+
+$$
+P(y_*\mid x_*, X, y) = \int P(y_*\mid x_*, \textbf{f})P(\textbf{f} \mid X, y) d\textbf{f}
+$$
+
+The possible functions \\(\textbf{f}\\) can be \\(<x^2, x^2+x^3, x^3 + \sin(x), ...>\\). Given a set of predefined functions \\(\textbf{f}\\), we can rewrite our linear model as
+
+$$
+Y=\sum_{j=1}^{M}\beta_j\phi_j(x) + \epsilon
+$$
+
+The model is still a linear model, but it can catch nonlinear relationships through basis functions. This is called __linear regression with basis functions.
+
+Given \\(M\\) basis functions \\(\textbf{f}\\), we are actually transformating the __input space__ to a __higher dimension feature space__, and build a linear model on the high dimension feature space.
+
+Let's look at the __feature transformation__ in another way. We project the input data \\(X\in R^{n, m}\\) into feature data \\(\hat{X} \in R^{n, M}\\), where \\(M >> m, M >> n\\). If you still remember the basic linear algebra, the __"fat" feature data__ has a lot of redundent features because \\(n << M\\). Then theoratically, there must be a way to define \\(n\\) functions, apply to the "sample dimension" and get exactly the same __feature data__. The function applies to samples \\(K(.)=K(x_i,x_j)\\) is called __kernel function__. This __kernel function applies on data samples__ represents the covariance function. This trick is the famous __kernel trick__! It is also widely used in SVM. I won't derive the relationship between kernel function and basis function here, but here is the final relationship:
+
+$$
+K(x_i,x_j) = \sum_{m=1}^{M} \lambda_m \phi_m(x_i) \phi_m(x_j) + \delta_{ij}\sigma^2
+$$ 
+
+
+If we have infinite number of basis function, and make the prediction through Bayesian inference (the probability integral), we gets to __Gaussian Process__.
+
+
+
+fadsfadsfads
+
+
+fadsf
 
 
 
