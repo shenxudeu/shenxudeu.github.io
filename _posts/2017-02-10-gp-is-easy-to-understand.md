@@ -16,7 +16,7 @@ Linear Regression
 -----
 I know everyone is familar with linear regression, which is the reason I start it with linear regression. Actually, Gaussian Process is rooted from it; it is just an expansion of it in a Bayesian view. As you may know, I, as a financial trader, deal with very noise data without many useful sharing (eg. publications). I personally think it is very important to start with some extremely simply algorithms, and gradually increase the complexity. For example, I normally start from a linear regression/classification or given simplier. If you want to utilize some more inputs in the data, you may want to generalize it into multi-variate regression. If you find linear relationship is not enough to catch your phenomenon, you can even generalize it to other functions such as Gaussian Process. If you want to catch the time-depdendencies on the data, you can generalize the linear system into a state-space systems. Once you find your system is too flexible in some sense, you can try to put some constrains (regularizations). In another words, we build an algorithm with "+" components and "-" components (regularization), and find a balance point for you specific problem. Anyway, my point is we can understand GP better by expanding it from a simple linear regression.
 
-####Linear Regression with Point Estimation (Maximum Likelihood)
+#### Linear Regression with Point Estimation (Maximum Likelihood)
 
 Given the training data \\(X\in R^{n,m}\\) (\\(n\\) samples with \\(m\\) features) and \\(Y\in R^{n,1}\\), the linear regression is looking for an "optimal" weight \\(W, W \in R^{m,1}\\) which fits the data well by the following linear model.
 
@@ -60,7 +60,7 @@ $$
 w = (X^TX)^{-1}X^Ty
 $$ 
 
-####Linear Regression with Bayesian View
+#### Linear Regression with Bayesian View
 In a "point estimation" view, once we found the best weight to fit the data, story ends here. The final prediction given a new data \\(X_*\\) is 
 
 $$
