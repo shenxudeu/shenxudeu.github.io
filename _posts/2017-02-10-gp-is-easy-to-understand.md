@@ -18,7 +18,7 @@ I know everyone is familar with linear regression, which is the reason I start i
 
 ####Linear Regression with Point Estimation (Maximum Likelihood)
 
-Given the training data $X\in R^{n,m}$ ($n$ samples with $m$ features) and $Y\in R^{n,1}$, the linear regression is looking for an "optimal" weight $W, W \in R^{m,1}$ which fits the data well by the following linear model.
+Given the training data $$X\in R^{n,m}$$ ($n$ samples with $m$ features) and $Y\in R^{n,1}$, the linear regression is looking for an "optimal" weight $W, W \in R^{m,1}$ which fits the data well by the following linear model.
 $$
 Y = X^TW + \epsilon 
 $$
