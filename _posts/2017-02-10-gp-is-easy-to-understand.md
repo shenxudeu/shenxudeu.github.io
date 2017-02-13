@@ -106,7 +106,7 @@ Y = np.dot(X,np.expand_dims(np.array([1.5,0.5]),1))+ np.random.randn(10,1) * 0.5
 plt.scatter(X[:,0:1], Y)
 ```
 The data looks like this.
-![](1d_linear_data.png)
+![]({{ site.baseurl  }}/img/1d_linear_data.png)
 
 After we set our prior distribution $\mu_0, \Sigma_p$ and noise variance $\sigma_n$ (shown in the following block), we can compute the posterior distributions from data. 
 
@@ -119,7 +119,7 @@ Sigma_p = np.identity(1)
 ```
 
 The prior we give to $w$ is a normal distribution centered at $0$ with $\sigma=1$, it looks like this.
-![](linear_prior.png)
+![]({{ site.baseurl  }}/img/linear_prior.png)
 
 Computing the posterior is simplying saying we put some __probability mass__ on some $w$ values to fit the data. We can do that in 3 lines of code.
 
@@ -131,7 +131,7 @@ posterior_var = np.linalg.inv(A)
 ```
 
 As shown in the following chart, our learned posterior distribution put a lot of probability mass around $1.5$, which is our true $w$ used to generate our random data.
-![](linear_posterior.png)
+![]({{ site.baseurl  }}/img/linear_posterior.png)
 
 If we use the learned posterior probabilities to make prediction, we can get the predicted $y$ values along with our predictive variances. The code is also very straight-forward.
 
@@ -145,7 +145,7 @@ y_test_var = np.dot(np.dot(X_test, np.linalg.inv(A)),X_test.T)
 ```
 
 We can also plot the predicted values with $+/- 3 \sigma$ lines.
-![](linear_predictions.png)
+![]({{ site.baseurl  }}/img/linear_predictions.png)
 
 
 
