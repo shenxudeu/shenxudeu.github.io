@@ -19,39 +19,54 @@ I know everyone is familar with linear regression, which is the reason I start i
 ####Linear Regression with Point Estimation (Maximum Likelihood)
 
 Given the training data \\(X\in R^{n,m}\\) (\\(n\\) samples with \\(m\\) features) and \\(Y\in R^{n,1}\\), the linear regression is looking for an "optimal" weight \\(W, W \in R^{m,1}\\) which fits the data well by the following linear model.
+
 $$
 Y = X^TW + \epsilon 
 $$
+
 where \\(\epsilon\\) is a random noise follows a Gaussian distribution,
+
 $$
 \epsilon \sim \mathcal{N}(0,\sigma^2)
 $$
+
 In math, the term "likelihood" measures how well the model fits the data given a set of weights, which is the probability
+
 $$
 P(Y\mid X,w) = \prod_{i=1}^{n}p(y_i\mid x_i,w  )=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}\sigma_n}exp(-\frac{(y_i-x_i^Tw)^2}{2\sigma_n^2})
 $$
+
 Through some simple linear algebra, we can get
+
 $$
 P(Y\mid X,w) \sim \mathcal{N}(X^Tw, \sigma^2I)
 $$
+
 Simply taking the \\(\log\\) likelihood, we can get the following equation
+
 $$
 \log P(Y\mid X,w) = -m\log{\sigma_n} - \frac{n}{2}\log(2\pi) - \sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma_n^2}
 $$ 
 
 Maxmum likelihood is simply saying find me the \\(w\\) can get largest \\(\log\\) likelihood.
+
 $$
 argmax_{w}-\sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma_n^2}
 $$
+
 The is the same __minimize mean square error!__ The solution is linear least square:
+
 $$
 w = (X^TX)^{-1}X^Ty
 $$ 
+
 ####Linear Regression with Bayesian View
 In a "point estimation" view, once we found the best weight to fit the data, story ends here. The final prediction given a new data \\(X_*\\) is 
+
 $$
 Y_*=X_*^TW
 $$
+
 But in a Bayesian view, we think all possible weights in our prior believe has a chance. The final prediction is the __weighted average__ of all possible outputs.
 
 $$
@@ -59,6 +74,7 @@ Y_* = \frac{1}{N}\sum_{j=1}^{N}\theta_j X_*^TW^j
 $$
 
 This is also the __sum rule__ in probability:
+
 $$
 P(y_*\mid x_*, X, y) = \int P(y_*\mid x_*, w)P(w \mid X, y) dw 
 $$
@@ -72,6 +88,7 @@ $$
 The second term is called __posterior distribution__. This gives us the weights of each possible \\(w\\). Think about this way, before we observe any data, we guess all possible \\(w\\) has equal chance. After we observed some data points, we changed our belief of the prior, and put some __probability mass__ on some possible weights \\(w\\) which fits the data better. The __changed distribution__ is called __posterior distribution__.
 
 But how to compute this posterior distribution after observing training data? __Bayesian Rule__ gives us the answer.
+
 $$
 P(w|y,X) = \frac{P(y\mid X, w)P(w)}{P(y\mid X)}
 $$
@@ -83,11 +100,13 @@ P(w|X, y) \sim \mathcal{N}(\frac{1}{\sigma_n^2}A^{-1}Xy, A^{-1})
 $$
 
 where 
+
 $$
 A=\sigma_n^{-2}XX^T + \Sigma_p^{-1}
 $$
 
 where our prior of $w$ is
+
 $$
 w \sim \mathcal{N}(0, \Sigma_p^2)
 $$
