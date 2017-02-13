@@ -128,7 +128,9 @@ X = np.hstack((X,np.ones((10,1))))
 Y = np.dot(X,np.expand_dims(np.array([1.5,0.5]),1))+ np.random.randn(10,1) * 0.5
 plt.scatter(X[:,0:1], Y)
 ```
+
 The data looks like this.
+
 ![]({{ site.baseurl  }}/img/1d_linear_data.png)
 
 After we set our prior distribution \\(\mu_0, \Sigma_p\\) and noise variance \\(\sigma_n\\) (shown in the following block), we can compute the posterior distributions from data. 
