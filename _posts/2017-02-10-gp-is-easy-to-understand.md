@@ -1,7 +1,6 @@
 Gaussian Process (GP) is Easy to Understand
 ==================================
 
-INSERT A PRETTY GP CHART.
 ![]({{ site.baseurl  }}/img/pg_pretty_chart.png)
 
 
