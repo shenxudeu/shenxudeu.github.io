@@ -1,8 +1,11 @@
 Gaussian Process (GP) is Easy to Understand
 ==================================
+
 INSERT A PRETTY GP CHART.
+
 In the beginning 
 ----
+
 This is a follow-up blog of "Variantial AntoEncoder", in which I tried to explain VAE in a Neural network way and Bayesian machine learning. As we know, VAE is a unsupervised learning method, now, I try to explain the most important supervised learning method in Bayesian machine learning, called Gaussian Process. 
 
 I have tried many many times to understand GP in different ways, reading paper, books, video, and even wrote my own [GP software in Theano](https://github.com/shenxudeu/gp_theano). I found most materials starting with a GP definition such as "A Gaussian process defines a distribution over functions has multivariate Gaussian distribution", which I cannot understand in a very long time. What is the distribution of functions? What does it looks like? They also talks about the called "covariance function". How does those functions present the "covariance"? In our normal person's mind, "covariance" is not defined as some sort of wired function, but just an [average of squared residuals as shown in Wikipedia](https://en.wikipedia.org/wiki/Variance)
@@ -61,6 +64,7 @@ w = (X^TX)^{-1}X^Ty
 $$ 
 
 #### Linear Regression with Bayesian View
+
 In a "point estimation" view, once we found the best weight to fit the data, story ends here. The final prediction given a new data \\(X_*\\) is 
 
 $$
