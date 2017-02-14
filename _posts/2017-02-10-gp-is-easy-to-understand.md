@@ -7,9 +7,9 @@ Gaussian Process (GP) is Easy to Understand
 In the beginning 
 ----
 
-This is a follow-up blog of "Variantial AntoEncoder", in which I tried to explain VAE in a Neural network way and Bayesian machine learning. As we know, VAE is a unsupervised learning method, now, I try to explain the most important supervised learning method in Bayesian machine learning, called Gaussian Process. 
+This is a follow-up blog of "Variantial AntoEncoder", in which I tried to explain VAE in a Neural Network way before relating it to Bayesian machine learning. As we know, VAE is a unsupervised learning method; now, I will try to explain the most important supervised learning method in Bayesian machine learning, called Gaussian Process. 
 
-I have tried many many times to understand GP in different ways, reading paper, books, video, and even wrote my own [GP software in Theano](https://github.com/shenxudeu/gp_theano). I found most materials starting with a GP definition such as "A Gaussian process defines a distribution over functions has multivariate Gaussian distribution", which I cannot understand in a very long time. What is the distribution of functions? What does it looks like? They also talks about the called "covariance function". How does those functions present the "covariance"? In our normal person's mind, "covariance" is not defined as some sort of wired function, but just an [average of squared residuals as shown in Wikipedia](https://en.wikipedia.org/wiki/Variance)
+I have tried many many times to understand GP in different ways, reading papers, books, watching videos, and even wrote my own [GP software in Theano](https://github.com/shenxudeu/gp_theano). I found most materials starting with a GP definition such as "A Gaussian process defines a distribution over functions has multivariate Gaussian distribution", which I cannot understand for a very long time. What is the distribution of functions? What does it looks like? They also talk about the so-called "covariance function". How does those functions present the "covariance"? In our normal people's mind, "covariance" is not defined as some sort of wierd function, but just an [average of squared residuals as shown in Wikipedia](https://en.wikipedia.org/wiki/Variance)
 
 In this blog, I try to make sense all those definitions. We do need some __linear algebra__ knowledge; if you are not familar with it, I find [Goodfellow's book chapter](http://www.deeplearningbook.org/contents/linear_algebra.html) very helpful.
 
@@ -110,7 +110,7 @@ $$
 A=\sigma_n^{-2}XX^T + \Sigma_p^{-1}
 $$
 
-where our prior of $w$ is
+where our prior of \\(w\\) is
 
 $$
 w \sim \mathcal{N}(0, \Sigma_p^2)
