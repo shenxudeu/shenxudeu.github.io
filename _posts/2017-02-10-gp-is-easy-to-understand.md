@@ -208,6 +208,43 @@ $$
 If we have infinite number of basis function, and make the prediction through Bayesian inference (the probability integral), we gets to __Gaussian Process__.
 
 
+Gaussian Process
+-----
+
+As described above, Gaussian process is just a way to combine infinite possible basis functions to make a prediction through kernel trick. Maybe it's still too abstract to understand, let's look at it in a different way, which some people call it ["Function-space view"](http://www.gaussianprocess.org/gpml/chapters/RW2.pdf). Consider if we have a function \\(\textbf{f}\\); it maps 1-D input data to 1-D output data, \\(y=\textbf{f}(x)\\), which we do not know exactly the formula. But we know similar \\(x\\) values will generate similar \\(y\\) values; the similarity of \\(y\\) is defined by some distance function, \\(k(x_p,x_q)\\). For example:
+
+$$
+\textbf{similarity}(\textbf{f}(x_p), \textbf{f}(x_q)) = k(x_p,x_q) = \exp(-0.5\frac{\mid x_p - x_q \mid}{0.01}  ^2)
+$$
+
+This __similarity function__ is called __covariance function__. 
+
+$$
+\textbf{cov}(\textbf{f}(x_p), \textbf{f}(x_q)) = k(x_p,x_q)
+$$
+
+How to relate __covariance function__ to our familar __sample covariance matrix__? Let's take a look the following code! Given \\(n\\) numbers of \\(x\\), we can use the the covariance function to compute a __sample covariance matrix__ for \\(\textbf{f}(x)\\), which is the sampled covariance matrix. If we assume the mean of \\(y\\) values are zero; given the sampled covariance matrix, we can generate the random samples of \\(\textbf{f}(x)\\).
+
+```python
+def kernel(Xq, Xp):
+    return np.exp(-0.5 * (Xq - Xp.T)**2/0.01) 
+
+x = np.linspace(0., 1., 500) # 500 points of x
+x = np.expand_dims(x,1)
+cov_mat = kernel(x, x) # sample covariance matrix
+
+y = np.random.multivariate_normal(np.zeros((500)), cov_mat, 1) # generate random samples
+```
+
+The following figure shows the generated samples.
+
+![]({{ site.baseurl  }}/img/random_sample_1_covfunc.png)
+
+We can use the sampled covariance matrix to generate infinite \\(y\\) samples. As shown in the following figure, we have generate 5 sets of samples of \\(y\\). Each line presents a __function__, which are uncorrelated. With in each function, the \\(y\\) values are correlated according to the sampled covariance matrix. By this way, we can present infinite basis function, which is the prior of Gaussian process. After observing some data, we can reject those function which does NOT fit the data. The remaining function gives us the prediction mean and variances.
+
+![]({{ site.baseurl  }}/img/random_sample_5_covfunc.png)
+
+
 
 fadsfadsfads
 
