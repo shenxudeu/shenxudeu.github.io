@@ -60,7 +60,7 @@ $$
 Compute the conditional probability with one variable is easy:
 
 $$
-p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \& Z)}{\#(Z)}
+p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\#(X_i \& Z)}{\#(Z)}
 $$
 
 
