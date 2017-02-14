@@ -45,18 +45,19 @@ This is the structure graph of Naive Bayesian classifier. Very similar to the pr
 As we have shown above, in order to solve the posterior probability, we need to learn the likelihood \\(p(X\|Z)\\), the prior $$p(Z)$$ and the model evidence $$p(X)$$. 
 
 It's easy to get the prior $$p(Z=1)$$, just estimate it from the training data 
-$$p(Z=1) = \frac{\\#Z==1}{\\#Total}$$
+$$
+p(Z=1) = \frac{\\#Z==1}{\\#Total}
+$$
 
 Hard part is the likelihood, \\(p(X_1=x_1,X_2=x_2,X_3=x_3\|Z=1)\\), which is a conditional joint probability. Thanks to the independency assumption of Naive Bayes, we can write this likelihood like this:
-$$
+
 \\(p(X_1=x_1,X_2=x_2,X_3=x_3\|Z=1) = p(X_1=x_1\|Z=1)p(X_2=x_2\|Z=1)p(X_3=x_3\|Z=1)\\)
-$$
+
 
 Compute the conditional probability with one variable is easy:
 
-$$
 \\(p(X_i\|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)}\\)
-$$
+
 
 The model evidence is just a integral of those posteriors.
 
