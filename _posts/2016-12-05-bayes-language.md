@@ -45,6 +45,7 @@ This is the structure graph of Naive Bayesian classifier. Very similar to the pr
 As we have shown above, in order to solve the posterior probability, we need to learn the likelihood \\(p(X\|Z)\\), the prior $$p(Z)$$ and the model evidence $$p(X)$$. 
 
 It's easy to get the prior $$p(Z=1)$$, just estimate it from the training data 
+
 $$
 p(Z=1) = \frac{\\#Z==1}{\\#Total}
 $$
@@ -56,7 +57,9 @@ Hard part is the likelihood, \\(p(X_1=x_1,X_2=x_2,X_3=x_3\|Z=1)\\), which is a c
 
 Compute the conditional probability with one variable is easy:
 
-\\(p(X_i\|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)}\\)
+$$
+p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\\#(X_i \\& Z)}{\\#(Z)}
+$$
 
 
 The model evidence is just a integral of those posteriors.
@@ -73,13 +76,13 @@ This is a graph defines more complicated and real life problem. Given the traini
 The **model forward (testing/inference)** is not the posterior probability anymore. Given a new input point $$$x'$$$ and the training data, we would like to infer what's the probability of corresponding value of $$y$$
 
 $$
-\\(p(y'\|x', X, Y) = \int{p(y\|x', \theta)p(\theta\|X,Y)d\theta}\\)
+p(y'|x', X, Y) = \int{p(y|x', \theta)p(\theta|X,Y)d\theta}
 $$
 
 It can also be written as 
 
 $$
-\\(p(y'\|x', X, Y) = \int{f_{\theta}(x')p(\theta\|X,Y)d\theta}\\)
+p(y'|x', X, Y) = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}
 $$
 
 We can see that is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, $$$\theta$$$ is not one best value, but a set of possible values with corresponding probabilities. Comparing with the "Bayesian Language" shown above, we need to slightly modify the language definition. 
@@ -96,7 +99,7 @@ The same as previous examples, the most important part is the posterior \\(p(\th
 One more point I need to make here is, the output of Bayesian inference is not just a value, but an expectation value and uncertainty. If we deal with the regression problem, the inference can be express as Gaussian likelihood.
 
 $$
-\\(\mathbf{E}(y') = \int{f_{\theta}(x')p(\theta\|X,Y)d\theta} \\)
+\mathbf{E}(y') = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}
 $$
 
 $$
