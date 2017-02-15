@@ -208,8 +208,11 @@ $$
 If we have infinite number of basis function, and make the prediction through Bayesian inference (the probability integral), we gets to __Gaussian Process__.
 
 
+
 Gaussian Process
 -----
+
+#### Prior and Covariance Function
 
 As described above, Gaussian process is just a way to combine infinite possible basis functions to make a prediction through kernel trick. Maybe it's still too abstract to understand, let's look at it in a different way, which some people call it ["Function-space view"](http://www.gaussianprocess.org/gpml/chapters/RW2.pdf). Consider if we have a function \\(\textbf{f}\\); it maps 1-D input data to 1-D output data, \\(y=\textbf{f}(x)\\), which we do not know exactly the formula. But we know similar \\(x\\) values will generate similar \\(y\\) values; the similarity of \\(y\\) is defined by some distance function, \\(k(x_p,x_q)\\). For example:
 
@@ -240,42 +243,94 @@ The following figure shows the generated samples.
 
 ![]({{ site.baseurl  }}/img/random_sample_1_covfunc.png)
 
-We can use the sampled covariance matrix to generate infinite \\(y\\) samples. As shown in the following figure, we have generate 5 sets of samples of \\(y\\). Each line presents a __function__, which are uncorrelated. With in each function, the \\(y\\) values are correlated according to the sampled covariance matrix. By this way, we can present infinite basis function, which is the prior of Gaussian process. After observing some data, we can reject those function which does NOT fit the data. The remaining function gives us the prediction mean and variances.
+We can use the sampled covariance matrix to generate infinite \\(y\\) samples. As shown in the following figure, we have generate 5 sets of samples of \\(y\\). Each line presents a __function__, which are uncorrelated. With in each function, the \\(y\\) values are correlated according to the sampled covariance matrix. By this way, we can present infinite basis function, which is the prior of Gaussian process. 
 
 ![]({{ site.baseurl  }}/img/random_sample_5_covfunc.png)
 
+#### Posterior and Prediction
+
+After observing some data, we can reject those function which does NOT fit the data. The remaining function gives us the prediction mean and variances. The following chart shows sampled 5 functions fits the data.
+
+![]({{ site.baseurl  }}/img/gp_posterior_sample.png)
+
+This trying-and-reject method is not efficient at all. Luckly, the Bayesian theory provides us a way to compute the posterior distribution easily and efficiently.
+
+We know our posterior is a Gaussian distribution with covariance matrix defined by the covariance function.
+
+$$
+\textbf{f} \sim \mathcal{N}(0, K(X, X))
+$$
+
+The prediction is simply:
+
+$$
+P(y_*\mid x_*, X, y) = \int P(y_*\mid x_*, \textbf{f})P(\textbf{f} \mid X, y) d\textbf{f} 
+$$
+
+Through some linear algebra of [multivariate Gaussian distribution](http://www.gaussianprocess.org/gpml/chapters/RWA.pdf), we can get the distribution of prediction as:
+
+$$
+\textbf{f}_* \mid X_*, X, f \sim \mathcal{N}(K(X_*, X)K(X,X)^{-1}\textbf{f}, K(X_*,X_*)-K(X_*,X)K(X,X)^{-1}K(X,X_*))
+$$
+
+Put it into code might be easiler to understand.
+
+```python
+# After observing some data, compute the posterior distribution from prior.
+X = np.expand_dims(np.array([0.2, 0.4, 0.6, 0.8]),1) # observed X
+f = np.expand_dims(np.array([1.1, 0.2, 0.8, 2.0]),1) # observed Y
+
+X_pred = np.expand_dims(np.linspace(0., 1., 500),1)
+K = kernel(X,X)
+K_inv = np.linalg.inv(K)
+K_s = kernel(X_pred, X)
+K_ss= kernel(X_pred, X_pred)
+posterior_mu = np.dot(K_s, np.dot(K_inv, f))
+posterior_covmat = K_ss - np.dot(K_s, np.dot(K_inv, K_s.T))
+```
+
+The Folowing code is used to generate samples from the learned posterior.
+
+```python
+# Sample from the posterior distribution
+sampled_f_pred = np.random.multivariate_normal(posterior_mu.flatten(), posterior_covmat, 5)
+
+plt.scatter(X.flatten(), f.flatten(),s=100,color='k')
+for i in range(len(sampled_f_pred)):
+    plt.plot(X_pred.flatten(), sampled_f_pred[i,:])
+```
+
+#### Implementation Trick - Cholesky Decomposition
+
+Until now, you should see how easy to understand and write your own Gaussian Process. You can use those couple of lines of code above to learn the posterior distribution and make predictions. You may notice in the equation and code above, we need to invert some covariance matrix, which can be tricky if data gets to large. __Cholesky Decomposition__ is a simply trick to do the matrix inverse more efficiently. If you are not familar with it, you can read [Section A.4 in the Gaussian Process book](http://www.gaussianprocess.org/gpml/chapters/RWA.pdf)
+
+Transfer it into compute code, here is the same code as we have shown above, but use Cholesky decompostion to compute the covariance matrix inverse.
+
+```python
+# Cholesky Matrix Inverse
+K = kernel(X,X)
+K_inv = np.linalg.inv(K)
+K_s = kernel(X_pred, X)
+K_ss= kernel(X_pred, X_pred)
+L = np.linalg.cholesky(K)
+alpha = scipy.linalg.cho_solve((L,True), f)
+V = scipy.linalg.cho_solve((L,True), K_s.T)
+posterior_mu = np.dot(K_s, alpha)
+posterior_covmat = K_ss - np.dot(K_s, V)
+```
+
+#### Research Topics
+
+So, Gaussian Process is very straight-forward, right? Just some linear algebra with Bayesian rules. The ticky part is understanding the kernel trick and covariance function. Now, you may ask: Since it is so simply, why people use Deep Learning at all?
+
+Firstly, Gaussian Process can be presented as Neural networks with some special kernel functions. We can just put a distribution on each weight matrix in the neurual network. Theoretically, the Bayesian inference should give us regularizations (such as drop-out) for free. However, because we need to invert the covariance matrix of samples. So, it is impossible to scale it to large dataset. 
+
+People developed a lot of approximation method to do the Bayesian inference. Those are the major research topics.
 
 
-fadsfadsfads
+#### At The End
 
+After this blog, I plan to write something on the approximation methods of Gaussian Process and write a Tensorflow version of light-weighted Gaussian Process package (maybe call it deuGP). Today is Valentines Day, happy Valentines Day, my dear wife Rosanne!! 
 
-fadsf
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
+And ... wish you happy there, deuce... 
 
