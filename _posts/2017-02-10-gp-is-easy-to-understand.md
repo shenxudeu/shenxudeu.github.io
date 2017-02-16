@@ -49,7 +49,7 @@ $$
 Simply taking the \\(\log\\) likelihood, we can get the following equation
 
 $$
-\log P(Y\mid X,w) = -m\log{\sigma_n} - \frac{n}{2}\log(2\pi) - \sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma_n^2}
+\log P(Y\mid X,w) = -n\log{\sigma_n} - \frac{n}{2}\log(2\pi) - \sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma_n^2}
 $$ 
 
 Maxmum likelihood is simply saying find me the \\(w\\) can get largest \\(\log\\) likelihood.
