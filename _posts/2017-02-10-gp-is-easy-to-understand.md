@@ -55,7 +55,7 @@ $$
 Maxmum likelihood is simply saying find me the \\(w\\) can get largest \\(\log\\) likelihood.
 
 $$
-argmax_{w}-\sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma_n^2}
+argmax_{w}-\sum_{i=1}^{n}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma_n^2}
 $$
 
 The is the same __minimize mean square error!__ The solution is linear least square:
