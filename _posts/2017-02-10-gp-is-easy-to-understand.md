@@ -72,7 +72,7 @@ $$
 Y_*=X_*^TW
 $$
 
-But in a Bayesian view, we think all possible weights in our prior believe has a chance. The final prediction is the __weighted average__ of all possible outputs.
+But in a Bayesian view, we think all possible weights in our prior belief has a chance. The final prediction is a __weighted average__ of all possible outputs.
 
 $$
 Y_* = \frac{1}{N}\sum_{j=1}^{N}\theta_j X_*^TW^j
