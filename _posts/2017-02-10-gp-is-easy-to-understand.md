@@ -77,13 +77,13 @@ $$
 Y_*=X_*^TW
 $$
 
-But in a Bayesian view, we think all possible weights in our prior belief has a chance. The final prediction is a __weighted average__ of all possible outputs.
+But in a Bayesian view, we think all possible weights in our prior belief has a chance. The final prediction is a __weighted average__ of all possible weight estimates. (Following: assume there are \\(N\\) possible weight matrices in our belief.)
 
 $$
 Y_* = \frac{1}{N}\sum_{j=1}^{N}\theta_j X_*^TW^j
 $$
 
-This is also the __sum rule__ in probability:
+The real world does not just have \\(N\\) scenarios. It has infinite. So we generalize with the __sum rule__ in probability:
 
 $$
 P(y_*\mid x_*, X, y) = \int P(y_*\mid x_*, w)P(w \mid X, y) dw 
