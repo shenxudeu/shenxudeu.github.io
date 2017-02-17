@@ -43,7 +43,7 @@ $$
 P(Y\mid X,w) = \prod_{i=1}^{n}p(y_i\mid x_i,w  )=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y_i-x_i^Tw)^2}{2\sigma^2})
 $$
 
-The above simply says, because there is a Gaussian noise in modeling, each \\(y\\) comes out having a Gaussian distribution, therefore the collection of \\(y\\)s, or \\(Y\\), can be written as a product of Gaussian distributions.
+The above simply says, because there is a Gaussian noise in modeling, each \\(y\\) comes out having a Gaussian distribution, therefore the collection of \\(y\\)'s, or \\(Y\\), can be written as a product of Gaussian distributions.
 
 Through some simple linear algebra, we can get
 
@@ -54,7 +54,7 @@ $$
 Simply taking the \\(\log\\) likelihood, we can get the following equation
 
 $$
-\log P(Y\mid X,w) = -n\log{\sigma} - \frac{n}{2}\log(2\pi) - \sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma^2}
+\log P(Y\mid X,w) = -n\log{\sigma} - \frac{n}{2}\log(2\pi) - \sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i\parallel ^2}{2\sigma^2}
 $$ 
 
 Maxmum likelihood is simply saying find me the \\(w\\) can get largest \\(\log\\) likelihood.
@@ -63,7 +63,7 @@ $$
 argmax_{w}-\sum_{i=1}^{n}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma^2}
 $$
 
-The is the same __minimize mean square error!__ The solution is linear least square:
+Because we only want to find answers of \\(w\\), \\(\sigma\\) now is totally irrelevant. The numerator is all we care. Observe the numerator -- this is the same as __minimizing mean square error!__ The solution is linear least square:
 
 $$
 w = (X^TX)^{-1}X^Ty
