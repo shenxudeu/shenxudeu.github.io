@@ -28,16 +28,18 @@ $$
 Y = X^TW + \epsilon 
 $$
 
-where \\(\epsilon\\) is a random noise follows a Gaussian distribution,
+where \\(\epsilon\\) is a random noise following a Gaussian distribution,
 
 $$
 \epsilon \sim \mathcal{N}(0,\sigma^2)
 $$
 
+Although it looks like an additional parameter \\(\sigma\\) is introduced, in the end we will see that it is actually irrelevant when deriving a point estimation solution. (It IS relevant, though, when deriving Bayesian solution.)
+
 In math, the term "likelihood" measures how well the model fits the data given a set of weights, which is the probability
 
 $$
-P(Y\mid X,w) = \prod_{i=1}^{n}p(y_i\mid x_i,w  )=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}\sigma_n}exp(-\frac{(y_i-x_i^Tw)^2}{2\sigma_n^2})
+P(Y\mid X,w) = \prod_{i=1}^{n}p(y_i\mid x_i,w  )=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y_i-x_i^Tw)^2}{2\sigma^2})
 $$
 
 Through some simple linear algebra, we can get
@@ -49,13 +51,13 @@ $$
 Simply taking the \\(\log\\) likelihood, we can get the following equation
 
 $$
-\log P(Y\mid X,w) = -n\log{\sigma_n} - \frac{n}{2}\log(2\pi) - \sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma_n^2}
+\log P(Y\mid X,w) = -n\log{\sigma} - \frac{n}{2}\log(2\pi) - \sum_{i=1}^{m}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma^2}
 $$ 
 
 Maxmum likelihood is simply saying find me the \\(w\\) can get largest \\(\log\\) likelihood.
 
 $$
-argmax_{w}-\sum_{i=1}^{n}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma_n^2}
+argmax_{w}-\sum_{i=1}^{n}\frac{\parallel y_{*i}-y_i)\parallel ^2}{2\sigma^2}
 $$
 
 The is the same __minimize mean square error!__ The solution is linear least square:
@@ -101,13 +103,13 @@ $$
 Through some linear algebra, we can get
 
 $$
-P(w|X, y) \sim \mathcal{N}(\frac{1}{\sigma_n^2}A^{-1}Xy, A^{-1})
+P(w|X, y) \sim \mathcal{N}(\frac{1}{\sigma^2}A^{-1}Xy, A^{-1})
 $$
 
 where 
 
 $$
-A=\sigma_n^{-2}XX^T + \Sigma_p^{-1}
+A=\sigma^{-2}XX^T + \Sigma_p^{-1}
 $$
 
 where our prior of \\(w\\) is
@@ -134,7 +136,7 @@ The data looks like this.
 
 ![]({{ site.baseurl  }}/img/1d_linear_data.png)
 
-After we set our prior distribution \\(\mu_0, \Sigma_p\\) and noise variance \\(\sigma_n\\) (shown in the following block), we can compute the posterior distributions from data. 
+After we set our prior distribution \\(\mu_0, \Sigma_p\\) and noise variance \\(\sigma\\) (shown in the following block), we can compute the posterior distributions from data. 
 
 ```python
 # Set-up prior
@@ -151,8 +153,8 @@ Computing the posterior is simplying saying we put some __probability mass__ on 
 
 ```python
 # Compute Posterior Distribution
-A = sigma_n**(-2) * np.dot(X.T, X) + np.identity(1)
-posterior_mu = sigma_n ** (-2) * np.dot(np.dot(np.linalg.inv(A), X.T),Y) +  np.dot(np.dot(np.linalg.inv(A), A), mu0)
+A = sigma**(-2) * np.dot(X.T, X) + np.identity(1)
+posterior_mu = sigma ** (-2) * np.dot(np.dot(np.linalg.inv(A), X.T),Y) +  np.dot(np.dot(np.linalg.inv(A), A), mu0)
 posterior_var = np.linalg.inv(A)
 ```
 
@@ -165,7 +167,7 @@ If we use the learned posterior probabilities to make prediction, we can get the
 # Make predictions on test data
 X_test = np.expand_dims(np.arange(-4,4,0.01),1)
 X_test = np.hstack((X_test,np.ones((len(X_test),1))))
-y_test_mu = sigma_n**(-2) * np.dot(np.dot(np.linalg.inv(A), X.T),Y) + np.dot(np.dot(np.linalg.inv(A), A), mu0)
+y_test_mu = sigma**(-2) * np.dot(np.dot(np.linalg.inv(A), X.T),Y) + np.dot(np.dot(np.linalg.inv(A), A), mu0)
 y_test_mu = np.dot(X_test, y_test_mu)
 y_test_var = np.dot(np.dot(X_test, np.linalg.inv(A)),X_test.T)
 ```
