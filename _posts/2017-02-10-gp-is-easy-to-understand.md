@@ -121,7 +121,7 @@ $$
 w \sim \mathcal{N}(0, \Sigma_p^2)
 $$
 
-This is called __Bayesian Linear Regression__. It gives us the predicted mean value as well as variance. The m, ean of posterior distribution looks similar to the point estimation, but with some extra terms. Actually, the extra term is proven the same as a __\\(L_2\\) regularization__ in __ridge regression__. In another words, the Bayesian method gives us the __regularization for free__. That's why we can see many people saying Bayesian learning algorithms does NOT overfit data. 
+This is called __Bayesian Linear Regression__. It gives us the predicted mean value as well as variance. The mean of posterior distribution looks similar to the point estimation, but with some extra terms. Actually, the extra term is proven the same as a __\\(L_2\\) regularization__ in __ridge regression__. In another words, the Bayesian method gives us the __regularization for free__. That's why we can see many people saying Bayesian learning algorithms does NOT overfit data. 
 
 As you can see, the concept is simple, just a linear model expressed in Bayesian language. In order to get the equations, we just need to follow some rules in basic linear algebra. Now, I gonna show you it is also very easy to code and use it.
  
