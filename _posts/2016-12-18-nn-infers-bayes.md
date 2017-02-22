@@ -20,6 +20,8 @@ We can further assume \\(tau^{-1}\\) is a diagonal covariance matrix. If we use 
 
 ![image]({{ site.baseurl  }}/img/gaussian_likelihood_nn.png )
 
+![image]({{ site.baseurl  }}/img/VAE_graph.png )
+
 Through the famous [reparametrization trick ](http://blog.evjang.com/2016_08_01_archive.html), we can use gradient descent to learn the NN weights \\(\theta\\) with **sampling** given a set of training samples with \\(Z\\) and corresponding \\(X\\)
 
 In order to compute the posterior distribution, likelihood is not enough. The hardest term is computing model evidence \\(p(X)\\), which is an integral over all configuration of hidden variables. 
