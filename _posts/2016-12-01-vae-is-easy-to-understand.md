@@ -11,7 +11,7 @@ I assume you, like me, know a bit of neural networks.
 
 I assume you, also like me, have attempted many times to understand Bayesian and have either failed or reached a state of "almost got it".
 
-After all, Bayesian people speak a different language from NN people, which can be counterintuitive at times. Among the hardest, there is no Andrej Karpathy yet on this topic. I am not by any measure qualified to be that guy, but only want to share what I've known from a rather practical point of view. By this, I mean, (and I think if there's one thing you want to know about me this is it), __I don't think I can fully understand any model unless I can write them out into code__. (Of course, [someone](https://en.wikiquote.org/wiki/Richard_Feynman) has already said that [in a famous way](http://archives.caltech.edu/pictures/1.10-29.jpg).)
+After all, Bayesian people speak a different language from NN people, which can be counterintuitive at times. Among the hardest, there is no Andrej Karpathy yet on this topic. I am not by any measure qualified to be that guy, but only want to share what I've known from a rather practical point of view. By this, I mean, (and I think if there's one thing you want to know about me this is it), __I don't think I fully understand anything before I code them up__. (Of course, [someone](https://en.wikiquote.org/wiki/Richard_Feynman) has already said that [in a famous way](http://archives.caltech.edu/pictures/1.10-29.jpg).)
 
 I plan to spend the time and space of 3 blog posts to make the linkage between NN and Bayesian. The current one is the first: VAE is easy to understand. Following this if you are still interested you would want to check out:
 
