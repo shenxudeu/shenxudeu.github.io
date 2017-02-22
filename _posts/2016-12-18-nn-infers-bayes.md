@@ -4,7 +4,7 @@ Congratulations, you have made to the third and final part! Equipped with the Ba
 
 ![image]({{ site.baseurl  }}/img/VAE_graph.png )
 
-Graph (a) is the VAE we are interested in. Since VAE is a unsupervised model, what we want to learn is the hidden random variable $$$Z$$$, which is a much lower representation of observed variable \\(X\\). This graph show us the posterior \\(p(Z\|X)\\) is **what we want to learn**. Also, please keep in mind, the joint distribution \\(p(X,Z)\\) can be expressed as \\(p(X\|Z)P(Z)\\) as shown in this graph. In order to compute the posterior distribution, Bayesian rule comes to convert it into likelihood, prior, and model evidence (the Bayesian language). 
+Graph (a) is the VAE we are interested in. Since VAE is a unsupervised model, what we want to learn is the hidden random variable \\(Z\\), which is a much lower representation of observed variable \\(X\\). This graph show us the posterior \\(p(Z\|X)\\) is **what we want to learn**. Also, please keep in mind, the joint distribution \\(p(X,Z)\\) can be expressed as \\(p(X\|Z)P(Z)\\) as shown in this graph. In order to compute the posterior distribution, Bayesian rule comes to convert it into likelihood, prior, and model evidence (the Bayesian language). 
 
 $$ 
 p(Z|X)=\frac{p(X|Z)p(Z)}{p(X)}
