@@ -68,7 +68,7 @@ Through some math re-writing, we can get the final loss function as negative of 
 
 $$loss = KL(q(Z|X,\theta)||p(Z)) - log{p(X|Z,\lambda)}$$
 
-\\(log{p(X\|Z,\lambda)}\\) is the binary cross-entropy we used as in AutoEncoder, and \\(KL(q(Z\|X,\theta)||p(Z)\\) is the regularization term. 
+\\(log{p(X\|Z,\lambda)}\\) is the binary cross-entropy we used as in AutoEncoder, and \\( KL(q(Z\|X,\theta)||p(Z)) \\) is the regularization term. 
 
 
 
