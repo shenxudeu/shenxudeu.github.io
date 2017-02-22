@@ -86,7 +86,7 @@ We can see different digits are well separated in the coding space already. (Bea
 
 ![image]({{ site.baseurl  }}/img/reconstruct_test.png )
 
-The first row is true testing images, and second row reconstructed images. It's pretty cool, right? Even we can still see some blurring in the reconstructed images, they mostly recovered the original. Remember, we compress the 784 dimensions into only **\\(2\\)** dimensions! If we increase the coding dimension from \\(2\\) to \\(12\\), here are the reconstructed images. It's much cleaner!
+The first row is true testing images, and second row reconstructed images. It's pretty cool, right? Even we can still see some blurring in the reconstructed images, they mostly recovered the original. Remember, we compress the \\(784\\) dimensions into only **\\(2\\)** dimensions! If we increase the coding dimension from \\(2\\) to \\(12\\), here are the reconstructed images. It's much cleaner!
 
 ![image]({{ site.baseurl  }}/img/reconstruct_test_latent12.png )
 
