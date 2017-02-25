@@ -94,6 +94,7 @@ Also, remember VAE is a generative model, which means we can "generate" new imag
 
 ![image]({{ site.baseurl  }}/img/generate_digit_map.png )
 
-We can generate any digit from 0 to 9. If we scan from \\((-0.15,-0.15)\\) and slowly move those numbers to \\((0.15, 0.15)\\), we can see the beautiful gif on the very top of this post.  
+We can generate any digit from 0 to 9. If we scan from \\((-0.15,-0.15)\\) and slowly move those numbers to \\((0.15, 0.15)\\), we can see the beautiful gif of slowly emerging digits at the very top of this post.  
 
+Another face image generation example (shown at the top) is trained with a latent dimension of \\(200\\), from this dataset. The test images displayed (of Emma Watson, Ziyi Zhang, Roger Federer) are of course not in the training set.
 
