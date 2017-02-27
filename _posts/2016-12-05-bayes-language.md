@@ -27,7 +27,7 @@ $$
 Let's assume we can model the graph \\(p(X\|Z)\\) somehow. We can get the final answer if we got $$p(Z)$$ and $$p(X)$$. In **Bayesian Language**, we have some names for all those math terms. They are just names, but would help you to read paper and discuss with "experts".
 
 > **Bayesian Language**
-
+>
 > - This \\(p(Z\|X)\\) is the **posterior probability**. This is the most important term in Bayesian modeling, because this is the question we are interested. 
 > - This \\(p(X\|Z)\\) is the **likelihood**. It means given the hidden variable $$Z$$, how likely it generates observed images as we have seen in training data. Building this is building the graph. The famous term "maximum likelihood estimation" is one way to solve this. It tries to find the best hidden variable $$Z$$ to lead to good likelihood.
 > - $$p(Z)$$ is the **prior probability**. This captures any prior information we know about $$Z$$ - for example, if we think that $$\frac{1}{3}$$ of all images in existence are of cats, then \\(p(Z=1)=\frac{1}{3}\\) and \\(p(Z=0)=\frac{2}{3}\\)
@@ -90,13 +90,13 @@ $$
 We can see that is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, $$$\theta$$$ is not one best value, but a set of possible values with corresponding probabilities. Comparing with the "Bayesian Language" shown above, we need to slightly modify the language definition. 
 
 > **Bayesian Language Update**
-
+>
 > - **Posterior Probability** \\(p(\theta\|X,Y) = \frac{p(Y\|X,\theta)p(\theta)}{p(Y\|X)}\\)
 > - **Likelihood** \\(p(Y\|X,\theta)\\)
-> - **Prior Probability** $$p(\theta)$$
-> - **Model Evidence** \\(p(Y|X) = \int{p(Y\|X,\theta)p(\theta)d\theta}\\)
+> - **Prior Probability** \\(p(\theta)\\)
+> - **Model Evidence** \\(p(Y\|X) = \int{p(Y\|X,\theta)p(\theta)d\theta}\\)
 
-The same as previous examples, the most important part is the posterior \\(p(\theta|X,Y)\\). It cannot usually be evaluated analytically. Instead we seek some estimations such as MC based sampling method or by an approximating **variational distribution**
+The same as previous examples, the most important part is the posterior \\(p(\theta\|X,Y)\\). It cannot usually be evaluated analytically. Instead we seek some estimations such as MC based sampling method or by an approximating **variational distribution**
 
 One more point I need to make here is, the output of Bayesian inference is not just a value, but an expectation value and uncertainty. If we deal with the regression problem, the inference can be express as Gaussian likelihood.
 
