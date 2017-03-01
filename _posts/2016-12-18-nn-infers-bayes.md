@@ -1,6 +1,6 @@
 Neural Network Infers Bayes
 -----
-Congratulations, you have made to the third and final part! Equipped with the Bayesian language, we can start to look at the "special" regularization term in the VAE loss function and try to make sense of it. Most articles talks about "variational inference" and derive the equations of **variational lower bound** and **KL divergence**. I encourage you to read this [blog from Eric Jang](http://blog.evjang.com/2016_08_01_archive.html) for more details of variational inference. Here, we are going to focus on how to use Neural Networks to present Bayesian likelihood and posterior and how to setup the loss function. Let's start with our old friend, the directed graph of Bayesian modeling. 
+Congratulations, you have made to the third and final part! Equipped with the Bayesian language, we can start to look at the "special" regularization term in the VAE loss function and try to make sense of it. Most articles talk about "variational inference" and derive the equations of **variational lower bound** and **KL divergence**. I encourage you to read this [blog from Eric Jang](http://blog.evjang.com/2016_08_01_archive.html) for more details of variational inference. In a different route, here we are going to focus on how to use Neural Networks to present Bayesian likelihood and posterior and how to setup the loss function. Let's start with our old friend, the directed graph of Bayesian modeling. 
 
 ![image]({{ site.baseurl  }}/img/VAE_graph.png )
 
