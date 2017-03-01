@@ -89,9 +89,10 @@ $$
 p(y'|x', X, Y) = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}
 $$
 
-We can see that is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, $$\theta$$ is not one best value, but a set of possible values with corresponding probabilities. Comparing with the "Bayesian Language" shown above, we need to slightly modify the language definition. 
+We can see that is is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, $$\theta$$ is not one best value found, but rather a set of possible values with corresponding probabilities. Comparing with the "Bayesian Language" shown above, we need to slightly modify the language definition. 
 
 > **Bayesian Language Update**
+>
 >
 > - **Posterior Probability** \\(p(\theta\|X,Y) = \frac{p(Y\|X,\theta)p(\theta)}{p(Y\|X)}\\)
 > - **Likelihood** \\(p(Y\|X,\theta)\\)
