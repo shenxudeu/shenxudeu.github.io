@@ -8,6 +8,7 @@ Let's start one step at a time. As usual, notations first. Very often, I would i
 
 > **Notations**
 >
+>
 > - Uppercase $$X$$ denotes a **random variable**. Different with deterministic variable, random variable does not have a fixed value, but several possible values with probabilities. 
 > - Uppercase $$P(X)$$ denotes the probability distribution over that variable. We can say $$P(X) \sim N(0,1)$$, which means this random variable generates value under a standard normal distribution.
 > - Lowercase $$x  \sim P(X)$$ denotes a value $$x$$ sampled from the probability distribution $$P(X)$$ via some generative process.
@@ -27,6 +28,7 @@ $$
 Let's assume we can model the graph \\(p(X\|Z)\\) somehow. We can get the final answer if we got $$p(Z)$$ and $$p(X)$$. In **Bayesian Language**, we have some names for all those math terms. They are just names, but would help you to read paper and discuss with "experts".
 
 > **Bayesian Language**
+>
 >
 > - \\(p(Z\|X)\\) is the **posterior probability**. This is the most important term in Bayesian modeling, because this is the question we are interested. 
 > - This \\(p(X\|Z)\\) is the **likelihood**. It means given the hidden variable $$Z$$, how likely it generates observed images as we have seen in training data. Building this is building the graph. The famous term "maximum likelihood estimation" is one way to solve this. It tries to find the best hidden variable $$Z$$ to lead to good likelihood.
@@ -64,7 +66,7 @@ p(X_i|Z)=\frac{P(X_i\cap Z)}{P(Z)}=\frac{\#(X_i \& Z)}{\#(Z)}
 $$
 
 
-The model evidence is just a integral of those posteriors.
+The model evidence is just an integral of those posteriors.
 
 
 Now, hopefully we have a clear picture how Bayes model works. Keep in mind, the posterior is easy under the Naive Bayes assumptions, but hard ('nontrackable') in most cases. You can imagine it being even harder to compute model evidence in those cases (because of the integral). 
@@ -75,7 +77,7 @@ Till now, I guess you may have the same question as I have. The "hidden variable
 
 This is a graph that defines a more complicated but real-life problem. Given the training inputs $$X=\{x_1,...,x_N\}$$ and their corresponding outputs $$Y=\{y_1,...,y_N\}$$, in **Bayesian (parametric) modeling**, we would like to find the parameters $$\theta$$ of a function $$y=f^{\theta}(x)$$ that is likely to have generated our outputs. In another word, what parameters are likely to have generated our data?
 
-The **model forward (testing/inference)** is not the posterior probability anymore. Given a new input point $$x'$$ and the training data, we would like to infer what's the probability of corresponding value of $$y$$
+The **model forward (testing/inference)** is not the posterior probability anymore. Given a new input point $$x'$$ and the training data, we would like to infer what's the probability of corresponding value of $$y'$$
 
 $$
 p(y'|x', X, Y) = \int{p(y|x', \theta)p(\theta|X,Y)d\theta}
