@@ -18,7 +18,7 @@ Let's start one step at a time. As usual, notations first. Very often, I would i
 Now, let's take a look at the first step. Normally, we are trying to model a dataset from a probability view. For example, we have an image of cat. The pixels in the image is our data (**observation** variable $$X$$ in probability view). We believe this observable variable is generated from a hidden (latent) variable $$Z$$, which can be a binary variable (cat or non-cat). We can draw this relationship via the following graph:
 ![image]({{ site.baseurl  }}/img/hidden_observation.png )
 
-The edge drawn from $$Z$$ to $$X$$ relates the two variables together via the conditional distribution \\(P(X \| Z)\\). Now, it's important to jump out of the graph and conditional probability, think about the problem we try to solve, which is given the image, is this an image of cat or not? In the probability language, what's the conditional probability \\(P(Z\|X)\\)? Even if we modeled the graph, what we got is the \\(P(X\|Z)\\), how can we get to the problem we are interested? **Bayesian** comes to play here.
+The edge drawn from $$Z$$ to $$X$$ relates the two variables together via the conditional distribution \\(P(X \| Z)\\). Now, it's important to jump out of the graph and conditional probability, to think about the problem we try to solve, which is: given the image, is this an image of cat or not? In the probability language, what's the conditional probability \\(P(Z\|X)\\)? Even if we modeled the graph, what we got is the \\(P(X\|Z)\\), how can we get to the problem we are interested? **Bayesian** comes to play here.
 
 $$
 p(Z|X)=\frac{p(X|Z)p(Z)}{p(X)}
@@ -28,29 +28,29 @@ Let's assume we can model the graph \\(p(X\|Z)\\) somehow. We can get the final 
 
 > **Bayesian Language**
 >
-> - This \\(p(Z\|X)\\) is the **posterior probability**. This is the most important term in Bayesian modeling, because this is the question we are interested. 
+> - \\(p(Z\|X)\\) is the **posterior probability**. This is the most important term in Bayesian modeling, because this is the question we are interested. 
 > - This \\(p(X\|Z)\\) is the **likelihood**. It means given the hidden variable $$Z$$, how likely it generates observed images as we have seen in training data. Building this is building the graph. The famous term "maximum likelihood estimation" is one way to solve this. It tries to find the best hidden variable $$Z$$ to lead to good likelihood.
 > - $$p(Z)$$ is the **prior probability**. This captures any prior information we know about $$Z$$ - for example, if we think that $$\frac{1}{3}$$ of all images in existence are of cats, then \\(p(Z=1)=\frac{1}{3}\\) and \\(p(Z=0)=\frac{2}{3}\\)
 > - $$p(X)$$ is called **model evidence** or **marginal likelihood**. The way to compute this is marginalizing the likelihood over hidden variable $$Z$$. 
->  - \\(p(X) = \int{p(X\|Z=z)p(Z=z)}dz\\)
+  >  - \\(p(X) = \int{p(X\|Z=z)p(Z=z)}dz\\)
 > - Marginalization is the bread and butter of Bayesian modeling, because this gives us the model uncertainty.
 
 
-This is the Bayesian language. It's easy to follow, but too **abstract** to understand, right? Because everything here is probability, but not straight-forward equations we can code up. I'm agree, and feel the same. Now, let's visualize it through a simple example under **Naive Bayesian Classifier**.  
+This is the Bayesian language. It's easy to follow, but too **abstract** to understand, right? Because everything here is probability, but not straight-forward equations that we can code up. I agree, and feel the same pain. Now, let's visualize it through a simple example under **Naive Bayesian Classifier**.  
 
 ![image]({{ site.baseurl  }}/img/naive_bayes.png )
 
-This is the structure graph of Naive Bayesian classifier. Very similar to the previous graph, but with one assumption, all the observations are conditional independent given the hidden variable. Let's say we have 3 observed binary variables $$X_1$$, $$X_2$$ and $$X_3$$ and one binary hidden variable $$X, Z=\{0,1\}$$. Given a dataset containing the observed variables and hidden variables value $$<X, Z>$$, how can we learn the graph and how to do the inference (solve the posterior probability) \\(p(Z=1\|X_1=1,X_2=0,X_3=1)\\)?  
+This is the structure graph of Naive Bayesian classifier. Very similar to the previous graph, but with one assumption, all the observations are conditional independent given the hidden variable. Let's say we have 3 observed binary variables $$X_1$$, $$X_2$$ and $$X_3$$ and one binary hidden variable $$Z=\{0,1\}$$. Given a dataset containing the pairs of values of observed variables and hidden variables, $$<X, Z>$$, how can we learn the graph and how to do the inference (solve the posterior probability) of, say, \\(p(Z=1\|X_1=1,X_2=0,X_3=1)\\)?  
 
 As we have shown above, in order to solve the posterior probability, we need to learn the likelihood \\(p(X\|Z)\\), the prior $$p(Z)$$ and the model evidence $$p(X)$$. 
 
-It's easy to get the prior $$p(Z=1)$$, just estimate it from the training data 
+It's easy to get the prior $$p(Z=1)$$, just estimate it from counting cases in the training data 
 
 $$
 p(Z=1) = \frac{\#Z==1}{\#Total}
 $$
 
-Hard part is the likelihood, \\(p(X_1=x_1,X_2=x_2,X_3=x_3\|Z=1)\\), which is a conditional joint probability. Thanks to the independency assumption of Naive Bayes, we can write this likelihood like this:
+The hard part is the likelihood, \\(p(X_1=x_1,X_2=x_2,X_3=x_3\|Z=1)\\), which is a conditional joint probability. Thanks to the independence assumption of Naive Bayes, we can write this likelihood like this:
 
 $$
 p(X_1=x_1,X_2=x_2,X_3=x_3|Z=1) = p(X_1=x_1|Z=1)p(X_2=x_2|Z=1)p(X_3=x_3|Z=1)
