@@ -67,13 +67,13 @@ $$
 The model evidence is just a integral of those posteriors.
 
 
-Now, hope we have a clear picture how does Bayes model works. Keep in mind, the posterior is easy under the Naive Bayes assumptions, but hard ('nontrackable') in most cases. You can imagine it would be even harder to compute the model evidence. 
+Now, hopefully we have a clear picture how Bayes model works. Keep in mind, the posterior is easy under the Naive Bayes assumptions, but hard ('nontrackable') in most cases. You can imagine it being even harder to compute model evidence in those cases (because of the integral). 
 
-Until now, I guess you may have the same question as I have. The "hidden variable" is our target, which is observable in the training data. Many situations, the real "hidden variable" is the variables we do not even know in the training data, such as some edge features in the image. How can we define these kind of problem? How can we present them in the graph?
+Till now, I guess you may have the same question as I have. The "hidden variable" is our target, which is observable in the training data. Many situations, the real "hidden variable" is the variables we do not even know in the training data, such as some object features in the image. How can we define this kind of a problem? How can we present them with the graph?
 
 ![image]({{ site.baseurl  }}/img/real_graph.png )
 
-This is a graph defines more complicated and real life problem. Given the training inputs $$X=\{x_1,...,x_N\}$$ and their corresponding outputs $$Y=\{y_1,...,y_N\}$$, in **Bayesian (parametric) modeling**, we would like to find the parameters $$\theta$$ of a function $$y=f^{\theta}(x)$$ that are likely to have generated our outputs. In another word, what parameters are likely to have generated out data?
+This is a graph that defines a more complicated but real-life problem. Given the training inputs $$X=\{x_1,...,x_N\}$$ and their corresponding outputs $$Y=\{y_1,...,y_N\}$$, in **Bayesian (parametric) modeling**, we would like to find the parameters $$\theta$$ of a function $$y=f^{\theta}(x)$$ that is likely to have generated our outputs. In another word, what parameters are likely to have generated our data?
 
 The **model forward (testing/inference)** is not the posterior probability anymore. Given a new input point $$$x'$$$ and the training data, we would like to infer what's the probability of corresponding value of $$y$$
 
