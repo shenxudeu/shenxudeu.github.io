@@ -75,7 +75,7 @@ Till now, I guess you may have the same question as I have. The "hidden variable
 
 This is a graph that defines a more complicated but real-life problem. Given the training inputs $$X=\{x_1,...,x_N\}$$ and their corresponding outputs $$Y=\{y_1,...,y_N\}$$, in **Bayesian (parametric) modeling**, we would like to find the parameters $$\theta$$ of a function $$y=f^{\theta}(x)$$ that is likely to have generated our outputs. In another word, what parameters are likely to have generated our data?
 
-The **model forward (testing/inference)** is not the posterior probability anymore. Given a new input point $$$x'$$$ and the training data, we would like to infer what's the probability of corresponding value of $$y$$
+The **model forward (testing/inference)** is not the posterior probability anymore. Given a new input point $$x'$$ and the training data, we would like to infer what's the probability of corresponding value of $$y$$
 
 $$
 p(y'|x', X, Y) = \int{p(y|x', \theta)p(\theta|X,Y)d\theta}
@@ -87,7 +87,7 @@ $$
 p(y'|x', X, Y) = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}
 $$
 
-We can see that is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, $$$\theta$$$ is not one best value, but a set of possible values with corresponding probabilities. Comparing with the "Bayesian Language" shown above, we need to slightly modify the language definition. 
+We can see that is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, $$\theta$$ is not one best value, but a set of possible values with corresponding probabilities. Comparing with the "Bayesian Language" shown above, we need to slightly modify the language definition. 
 
 > **Bayesian Language Update**
 >
