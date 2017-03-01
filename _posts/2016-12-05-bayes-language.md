@@ -96,9 +96,9 @@ We can see that is is marginalizing likelihood over posterior. Also remember, in
 > - **Prior Probability** \\(p(\theta)\\)
 > - **Model Evidence** \\(p(Y\|X) = \int{p(Y\|X,\theta)p(\theta)d\theta}\\)
 
-The same as previous examples, the most important part is the posterior \\(p(\theta\|X,Y)\\). It cannot usually be evaluated analytically. Instead we seek some estimations such as MC based sampling method or by an approximating **variational distribution**
+The same as previous examples, the most important part is still the posterior \\(p(\theta\|X,Y)\\). It cannot usually be evaluated analytically. Instead we seek some estimations such as MC based sampling method or by an approximating **variational distribution**.
 
-One more point I need to make here is, the output of Bayesian inference is not just a value, but an expectation value and uncertainty. If we deal with the regression problem, the inference can be express as Gaussian likelihood.
+One more point I need to make here is, the output of Bayesian inference is not just a value, but expected values and uncertainties. If we deal with the regression problem, the inference can be express as Gaussian likelihood.
 
 $$
 \mathbf{E}(y') = \int{f_{\theta}(x')p(\theta|X,Y)d\theta}
@@ -108,4 +108,4 @@ $$
 var(y') = \tau^{-1} I
 $$
 
-If we deal with classification problem, the expectation is softmax likelihood. [Yarin Gal](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html) described a way to extract prediction exception in a Bayesian view from Neural Network with dropout, which provides a good link between NN and Bayesian modeling. 
+If we deal with classification problem, the expectation is softmax likelihood. [Yarin Gal](http://mlg.eng.cam.ac.uk/yarin/blog_3d801aa532c1ce.html) described a way to extract prediction exception in a Bayesian view from Neural Network with dropout, which provides a good linkage between NN and Bayesian modeling. 
