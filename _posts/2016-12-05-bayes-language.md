@@ -7,8 +7,7 @@ That's because there is a Bayesian language and a way to think about relationshi
 Let's start one step at a time. As usual, notations first. Very often, I would ignore the notation part when reading any paper (because it is boring for sure). But please read it this time, not only because these are building characters of this new language we are getting into, but also it could be a nice recollection of certain basic concepts from high school probability. [Here's a refresher](https://www.khanacademy.org/math/statistics-probability/random-variables-stats-library) I found very useful myself.
 
 > **Notations**
->
->
+
 > - Uppercase $$X$$ denotes a **random variable**. Different with deterministic variable, random variable does not have a fixed value, but several possible values with probabilities. 
 > - Uppercase $$P(X)$$ denotes the probability distribution over that variable. We can say $$P(X) \sim N(0,1)$$, which means this random variable generates value under a standard normal distribution.
 > - Lowercase $$x  \sim P(X)$$ denotes a value $$x$$ sampled from the probability distribution $$P(X)$$ via some generative process.
@@ -28,8 +27,7 @@ $$
 Let's assume we can model the graph \\(p(X\|Z)\\) somehow. We can get the final answer if we got $$p(Z)$$ and $$p(X)$$. In **Bayesian Language**, we have some names for all those math terms. They are just names, but would help you to read paper and discuss with "experts".
 
 > **Bayesian Language**
->
->
+
 > - \\(p(Z\|X)\\) is the **posterior probability**. This is the most important term in Bayesian modeling, because this is the question we are interested. 
 > - This \\(p(X\|Z)\\) is the **likelihood**. It means given the hidden variable $$Z$$, how likely it generates observed images as we have seen in training data. Building this is building the graph. The famous term "maximum likelihood estimation" is one way to solve this. It tries to find the best hidden variable $$Z$$ to lead to good likelihood.
 > - $$p(Z)$$ is the **prior probability**. This captures any prior information we know about $$Z$$ - for example, if we think that $$\frac{1}{3}$$ of all images in existence are of cats, then \\(p(Z=1)=\frac{1}{3}\\) and \\(p(Z=0)=\frac{2}{3}\\)
@@ -92,8 +90,7 @@ $$
 We can see that is is marginalizing likelihood over posterior. Also remember, in the Bayesian modeling, $$\theta$$ is not one best value found, but rather a set of possible values with corresponding probabilities. Comparing with the "Bayesian Language" shown above, we need to slightly modify the language definition. 
 
 > **Bayesian Language Update**
->
->
+
 > - **Posterior Probability** \\(p(\theta\|X,Y) = \frac{p(Y\|X,\theta)p(\theta)}{p(Y\|X)}\\)
 > - **Likelihood** \\(p(Y\|X,\theta)\\)
 > - **Prior Probability** \\(p(\theta)\\)
