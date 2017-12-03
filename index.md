@@ -3,12 +3,12 @@ title: dfdHello, World! This is Shen
 layout: default
 ---
 
-# Hello World, This is Shen
+# Welcome to Shen's Blog
 
 
 This is Shen. 
 
-The name, in Chinese character, is 申, which is the archaic, alternative name of Shanghai the city. No surprise, I was born in Shanghai, hence the name. 
+The name, in Chinese character, is 申, which is the archaic, alternative name of Shanghai the city. No surprise, I was born in Shanghai, hence the name. I work in quantitative finance, try to understand market behaviors through data.
 
 The purpose of this blog: explaining complex concepts by plain words, and most importantly, codes.
 
